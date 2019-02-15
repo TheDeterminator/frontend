@@ -2,38 +2,41 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SelectionContainer = styled.div`
-  width: 600px;
+  width: 300px;
   height: 150px;
-  border: 1px solid black;
+  background-color: #D1DAE5;
+  border: none;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 50px auto;
 `
 const ButtonContainer = styled.div`
-  width: 400px;
+  width: 300px;
   height: 50px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `
 const Button = styled.button`
   width: 100px;
   height: 25px;
-  border: 1px solid black;
+  background-color: #FF7F50;
+  border: none;
   border-radius: 5px;
 `
 
-const UserTypeSelection = () => {
+const UserTypeSelection = (props) => {
   return (
     <SelectionContainer>
       <div>Are you a...</div>
       <ButtonContainer>
-        <Button>Coordinator</Button>
+        <Button onClick={props.selectCoordinator}>Coordinator</Button>
         <div>or</div>
-        <Button>Donor</Button>
+        <Button onClick={props.selectDonor}>Donor</Button>
       </ButtonContainer>
     </SelectionContainer>
   );

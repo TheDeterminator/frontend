@@ -6,14 +6,15 @@ import './App.css';
 //import UserTypeSelection from './components/UserTypeSelection';
 //import Registration from './components/Registration';
 //import ListviewComponent from './components/ListviewComponent';
-import GridviewComponent from './components/GridviewComponent';
+//import GridviewComponent from './components/GridviewComponent';
+import Header from './components/Header';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <GridviewComponent />
+        <Header />
       </div>
     );
   }

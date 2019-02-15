@@ -48,31 +48,57 @@ const Select = styled.select`
   margin-bottom: 15px;
 `
 
-const SignUpModal = (props) => {
-  return (
-    <LoginContainer>
-      <h1>Sign Up</h1>
-      {props.coordinatorSelected ? null : <Form>
-        <NameInputContainer>
-          <NameInput placeholder='First Name' />
-          <NameInput placeholder='Last Name' />
-        </NameInputContainer>
-        <Input placeholder='Email' />
-        <Input placeholder='Username'/>
-        <Input placeholder='Password' type='password' />
-        <Input placeholder='Confirm Password' type='password' />
-        {props.userType === 'donor' ? <Button>Sign Up</Button> : <Button onClick={props.continueButton}>Continue</Button>}
-      </Form>}
-      {props.userType === 'coordinator' && props.coordinatorSelected ? <Form>
-        <Input placeholder='Organization Title' />
-        <Select>
-          {props.countries.map(country => <option>{country}</option>)}
-        </Select>
-        <Button>Sign Up</Button>
-        <Button onClick={props.backButton}>Back</Button>
-      </Form>: null}
-    </LoginContainer>
-  );
+class SignUpModal extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+      title: '',
+      country: ''
+    }
+  }
+
+  changeHandler = e => {
+    this.setState({...this.state,[e.target.name] : e.target.value})
+  }
+
+  selectChangeHandler = e => {
+    this.setState({
+      country: e.target.value
+    });
+  }
+
+  render(){
+    return (
+      <LoginContainer>
+        <h1>Sign Up</h1>
+        {this.props.coordinatorSelected ? null : <Form>
+          <NameInputContainer>
+            <NameInput onChange={this.changeHandler} name='firstName' value={this.state.firstName} placeholder='First Name' />
+            <NameInput onChange={this.changeHandler} name='lastName' value={this.state.lastName} placeholder='Last Name' />
+          </NameInputContainer>
+          <Input onChange={this.changeHandler} name='email' value={this.state.email} placeholder='Email' />
+          <Input onChange={this.changeHandler} name='username' value={this.state.username} placeholder='Username'/>
+          <Input onChange={this.changeHandler} name='password' value={this.state.password} placeholder='Password' type='password' />
+          <Input onChange={this.changeHandler} name='confirmPassword' value={this.state.confirmPassword} placeholder='Confirm Password' type='password' />
+          {this.props.userType === 'donor' ? <Button>Sign Up</Button> : <Button onClick={this.props.continueButton}>Continue</Button>}
+        </Form>}
+        {this.props.userType === 'coordinator' && this.props.coordinatorSelected ? <Form>
+          <Input onChange={this.changeHandler} name='title' value={this.state.title} placeholder='Organization Title' />
+          <Select onChange={this.selectChangeHandler} value={this.state.country}>
+            {this.props.countries.map(country => <option value={country}>{country}</option>)}
+          </Select>
+          <Button>Sign Up</Button>
+          <Button onClick={this.props.backButton}>Back</Button>
+        </Form>: null}
+      </LoginContainer>
+    );
+  }
 }
 
 export default SignUpModal;

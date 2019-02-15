@@ -28,15 +28,34 @@ const LoginButton = styled.button`
 `
 
 class LoginModal extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      credentials: {
+        username: '',
+        password: ''
+      }
+    }
+  }
+
+  changeHandler = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name] : e.target.value
+      }
+    });
+  }
+
   render(){
     return (
       <LoginContainer>
         <h1>Login</h1>
-        <div>
-          <Input placeholder='Username' />
-          <Input placeholder='Password' type='password' />
-          <LoginButton>Login</LoginButton>
-        </div>
+        <form>
+          <Input onChange={this.changeHandler} placeholder='Username' name='username' value={this.state.credentials.username}/>
+          <Input onChange={this.changeHandler} placeholder='Password' type='password' name='password' value={this.state.credentials.password}/>
+          <LoginButton type='submit'>Login</LoginButton>
+        </form>
         <div>
           <span>Not registered? <a href=''>Sign Up</a></span>
         </div>

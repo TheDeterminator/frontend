@@ -5,13 +5,15 @@ import './App.css';
 //import SignUpModal from './components/SignUpModal';
 //import UserTypeSelection from './components/UserTypeSelection';
 //import Registration from './components/Registration';
-import ListviewComponent from './components/ListviewComponent';
+//import ListviewComponent from './components/ListviewComponent';
+import GridviewComponent from './components/GridviewComponent';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ListviewComponent />
+        <GridviewComponent />
       </div>
     );
   }

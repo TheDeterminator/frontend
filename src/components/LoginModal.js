@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const LoginContainer = styled.div`
   width: 300px;
-  height: 425px;
+  height: 450px;
   background-color: #F7F7F7;
   border-radius: 3px;
   margin-left: 25px;
@@ -12,6 +12,35 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   border: 1px solid grey;
+`
+const UserSelectionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+const UserSelection = styled.div`
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const CoordinatorSelected = styled.div`
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const DonorSelected = styled.div`
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 const Input = styled.input`
   font-size: 16px;
@@ -47,13 +76,35 @@ const GoogleButton = styled.button`
 `
 
 class LoginModal extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      selectedActive: true
+    }
+  }
+
+  selectionHandler = e => {
+    this.setState({
+      selectedActive: !this.state.selectedActive
+    });
+  }
+
   render(){
     return (
       <LoginContainer>
+        {this.state.selectedActive ?
+          (<UserSelectionContainer>
+            <UserSelection>Coordinator</UserSelection>
+            <CoordinatorSelected onClick={this.selectionHandler}>Donor</CoordinatorSelected>
+          </UserSelectionContainer>) :
+          (<UserSelectionContainer>
+            <DonorSelected onClick={this.selectionHandler}>Coordinator</DonorSelected>
+            <UserSelection>Donor</UserSelection>
+          </UserSelectionContainer>)}
         <h1>Login</h1>
         <div>
-          <Input placeholder='email...' />
-          <Input placeholder='password...' type='password' />
+          <Input placeholder='Username' />
+          <Input placeholder='Password' type='password' />
           <LoginButton>Login</LoginButton>
         </div>
         <div>

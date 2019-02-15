@@ -10,6 +10,7 @@ import {Route} from 'react-router-dom';
 //import GridviewComponent from './components/GridviewComponent';
 import Header from './components/Header';
 import RegistrationPage from './views/RegistrationPage'
+import LoginModal from './components/LoginModal';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Route exact path='/register' component={RegistrationPage}/>
+        <Route exact path='/login' component={LoginModal} />
       </div>
     );
   }

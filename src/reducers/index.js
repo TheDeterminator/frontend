@@ -71,6 +71,54 @@ const initialState = {
 
         Currently, Peruvian Hearts supports the Hogar Mercedes by sending groups of visitors who want to volunteer their time and skills to benefit the girls there.  We also provide in-kind donations to the hogar such as: children’s chewable multivitamins, girls’ clothing, books in Spanish, school supplies, and toiletries.`,
         user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
+    },
+    {
+        title: `Helping in the Hogares`,
+        country: 'Peru',
+        description: `Peruvian Hearts began its support for Hogar Mercedes in 2003.  It is home to approximately 15 school age girls and each girl comes from a chaotic situation with a disheartening past.  In 2003, the children at the hogar were hungry and malnourished, with extremely limited access to healthcare and education.  The Peruvian government used to provide a small monthly stipend for rice, flour, and a little milk, but even that was grossly inadequate to keep the girls in good health.  The girls were timid and lacked confidence.  Their clothing was tattered and worn and their skin was badly chapped from the cold and wind.`,
+        user_id: 3
     }
 ]
 };

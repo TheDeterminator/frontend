@@ -12,6 +12,7 @@ import Header from './components/Header';
 import RegistrationPage from './views/RegistrationPage'
 import LoginModal from './components/LoginModal';
 import CoordinatorHome from './views/CoordiantorHome';
+import DonorHome from './views/DonorHome';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
         <Route exact path='/register' component={RegistrationPage}/>
         <Route exact path='/login' component={LoginModal} />
         <Route exact path='/home/coordinator' component={CoordinatorHome} />
+        <Route exact path='/home/donor' component={DonorHome} />
       </div>
     );
   }

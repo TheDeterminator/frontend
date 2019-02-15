@@ -8,6 +8,7 @@ const ListviewComponentContainer = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  margin: 25px 25px;
 `
 const ImageContainer = styled.div`
   width: 175px;
@@ -18,21 +19,24 @@ const ImageContainer = styled.div`
   align-items: center;
 `
 const Content = styled.div`
-  width: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 125px;
 `
-const Title = styled.h1`
-  display: flex;
-  align-self: flex-start;
+const Description = styled.p`
+  width: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
-const GridviewComponent = () => {
+const GridviewComponent = (props) => {
   return (
     <ListviewComponentContainer>
       <ImageContainer>Picture</ImageContainer>
       <Content>
-        <Title>Title</Title>
-        <p>Story Preview</p>
+        <div>{props.story.title}</div>
+        <Description>{props.story.description}</Description>
       </Content>
     </ListviewComponentContainer>
   );

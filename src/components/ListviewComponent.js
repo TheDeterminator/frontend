@@ -20,7 +20,7 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
 `
-const Description = styled.div`
+const Description = styled.p`
   width: 80%;
   height: 75px;
   text-overflow: ellipsis;
@@ -42,7 +42,7 @@ const ListviewComponent = (props) => {
         <div>{props.story.title}</div>
         <div>{props.story.country}</div>
         <Description>
-          <p>{props.story.description}</p>
+          {props.story.description}
         </Description>
       </ContentContainer>
     </ListviewComponentContainer>

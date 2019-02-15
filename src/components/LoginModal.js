@@ -11,35 +11,6 @@ const LoginContainer = styled.div`
   align-items: center;
   margin: 50px auto;
 `
-const UserSelectionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-const UserSelection = styled.div`
-  width: 150px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-const CoordinatorSelected = styled.div`
-  border-left: 1px solid #000;
-  border-bottom: 1px solid #000;
-  width: 150px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-const DonorSelected = styled.div`
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  width: 150px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 const Input = styled.input`
   font-size: 16px;
   border: none;

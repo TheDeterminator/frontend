@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { login } from '../actions'
 
 const LoginContainer = styled.div`
   width: 300px;
@@ -28,12 +30,12 @@ const LoginButton = styled.button`
 `
 
 class LoginModal extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       credentials: {
-        username: '',
-        password: ''
+        username: ``,
+        password: ``
       }
     }
   }
@@ -46,12 +48,16 @@ class LoginModal extends React.Component {
       }
     });
   }
+  loginHandler = e => {
+    e.preventDefault();
+    this.props.login(this.state.credentials);
+  }
 
   render(){
     return (
       <LoginContainer>
         <h1>Login</h1>
-        <form>
+        <form onSubmit={this.loginHandler} method='POST'>
           <Input onChange={this.changeHandler} placeholder='Username' name='username' value={this.state.credentials.username}/>
           <Input onChange={this.changeHandler} placeholder='Password' type='password' name='password' value={this.state.credentials.password}/>
           <LoginButton type='submit'>Login</LoginButton>
@@ -64,4 +70,4 @@ class LoginModal extends React.Component {
   }
 }
 
-export default LoginModal;
+export default connect(null, {login: login})(LoginModal);

@@ -1,4 +1,9 @@
-import {GET_GLOBAL_STORIES, GET_COORDINATOR_STORIES, NEW_STORY} from '../actions';
+import { GET_GLOBAL_STORIES,
+        GET_COORDINATOR_STORIES,
+        NEW_STORY,
+        LOGIN,
+        REGISTER,
+        DELETE_STORY } from '../actions';
 
 const initialState = {
   globalStories: [],
@@ -13,6 +18,12 @@ export default (state = initialState, action) => {
         return {coordinatorStories: action.payload};
       case NEW_STORY:
         return {coordinatorStories: action.payload};
+      case DELETE_STORY:
+        return {coordinatorStories: action.payload};
+      case LOGIN:
+        return {...state};
+      case REGISTER:
+        return {...state};
       default:
         return state;
     }

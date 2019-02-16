@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Popup from 'reactjs-popup';
+import {connect} from 'react-redux';
+import {deleteStory} from '../actions';
 
 const ListviewComponentContainer = styled.div`
-  max-width: 650px;
-  width: 100%:
+  width: 650px;
   height: 175px;
   border: 1px solid #FF7F50;
   border-radius: 5px;
@@ -74,11 +75,11 @@ class ListviewComponent extends React.Component {
           <h2>{this.props.story.country}</h2>
           <p>{this.props.story.description}</p>
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={e => this.props.deleteStory(this.props.story.id)}>Delete</button>
         </Popup>
       </div>
     );
   }
 }
 
-export default ListviewComponent;
+export default connect(null, {deleteStory: deleteStory})(ListviewComponent);

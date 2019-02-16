@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
+import {register} from '../actions';
 
 const LoginContainer = styled.div`
   width: 300px;
@@ -52,14 +54,14 @@ class SignUpModal extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      username: '',
-      password: '',
-      confirmPassword: '',
-      title: '',
-      country: ''
+      firstName: ``,
+      lastName: ``,
+      email: ``,
+      username: ``,
+      password: ``,
+      confirmPassword: ``,
+      title: ``,
+      country: ``
     }
   }
 
@@ -70,6 +72,17 @@ class SignUpModal extends React.Component{
   selectChangeHandler = e => {
     this.setState({
       country: e.target.value
+    });
+  }
+
+  registerNewUser = e => {
+    this.props.register({
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      role: this.props.userType,
+      country: this.state.country,
+      organization_title: this.state.country
     });
   }
 
@@ -93,7 +106,7 @@ class SignUpModal extends React.Component{
           <Select onChange={this.selectChangeHandler} value={this.state.country}>
             {this.props.countries.map(country => <option value={country}>{country}</option>)}
           </Select>
-          <Button>Sign Up</Button>
+          <Button onClick={this.registerNewUser}>Sign Up</Button>
           <Button onClick={this.props.backButton}>Back</Button>
         </Form>: null}
       </LoginContainer>
@@ -101,4 +114,4 @@ class SignUpModal extends React.Component{
   }
 }
 
-export default SignUpModal;
+export default connect(null, {register: register})(SignUpModal);

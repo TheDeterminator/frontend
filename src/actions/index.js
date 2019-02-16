@@ -26,6 +26,9 @@ import axios from 'axios';
 export const GET_GLOBAL_STORIES = 'GET_GLOBAL_STORIES';
 export const GET_COORDINATOR_STORIES = 'GET_COORDINATOR_STORIES';
 export const NEW_STORY = 'NEW_STORY';
+export const LOGIN = 'LOGIN';
+export const REGISTER = 'REGISTER';
+export const DELETE_STORY = 'DELETE_STORY';
 
 export const getGlobalStories = () => dispatch => {
   axios
@@ -41,9 +44,9 @@ export const getGlobalStories = () => dispatch => {
     });
 }
 
-export const getCoordinatorStories = (user) => dispatch => {
+export const getCoordinatorStories = (id) => dispatch => {
   axios
-    .get(`https://bountiful-backend.herokuapp.com/coord/${user}/home`)
+    .get(`https://bountiful-backend.herokuapp.com/coord/${id}/home`)
     .then(response => {
       dispatch({
         type: GET_COORDINATOR_STORIES,
@@ -55,9 +58,9 @@ export const getCoordinatorStories = (user) => dispatch => {
     });
 }
 
-export const newStory = (user, story) => dispatch => {
+export const newStory = (id, story) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/coord/${user}`, story)
+    .post(`https://bountiful-backend.herokuapp.com/coord/${id}`, story)
     .then(response => {
       dispatch({
         type: NEW_STORY,
@@ -67,4 +70,45 @@ export const newStory = (user, story) => dispatch => {
     .catch(err => {
       console.log(err);
     });
+}
+
+export const login = (user) => dispatch => {
+  axios
+    .post(`https://bountiful-backend.herokuapp.com/login`, user)
+    .then(response => {
+      dispatch({
+        type: LOGIN
+      });
+    })
+    .catch(err => {
+      console.log("Login Error: ", err);
+    });
+}
+
+export const register = (user) => dispatch => {
+  axios
+    .post(`https://bountiful-backend.herokuapp.com/register`, user)
+    .then(response => {
+      dispatch({
+        type: REGISTER
+      });
+    })
+    .catch(err => {
+      console.log("Registration Error: ", err);
+    });
+}
+
+export const deleteStory = (storyID) => dispatch => {
+  axios
+  .delete(`https://bountiful-backend.herokuapp.com/story/${storyID}`)
+  .then(response => {
+    console.log(response);
+    dispatch({
+      type: DELETE_STORY,
+      payload: response.data
+    });
+  })
+  .catch(err => {
+    console.log("Deletion Error: ", err);
+  });
 }

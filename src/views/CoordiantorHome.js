@@ -31,7 +31,8 @@ class CoordinatorHome extends React.Component {
     this.state = {
       open: false,
       story: {
-
+        title: ``,
+        description: ``
       }
     }
   }
@@ -46,12 +47,15 @@ class CoordinatorHome extends React.Component {
 
   saveNewStory = e => {
     this.setState({open: false});
-    this.props.newStory('nicholl', this.state.story)
+    this.props.newStory('3', this.state.story);
+  }
+
+  changeHandler = e => {
+    this.setState({story: {...this.state.story ,[e.target.name] : e.target.value}})
   }
 
   componentDidMount(){
-    this.props.getCoordinatorStories('nicholl');
-    console.log(this.props.coordinatorStories);
+    this.props.getCoordinatorStories('3');
   }
 
   render(){
@@ -62,8 +66,8 @@ class CoordinatorHome extends React.Component {
         </ListContainer>
         <NewStoryButton onClick={this.openNewStory}>+ New Story</NewStoryButton>
         <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeNewStory}>
-          <input placeholder='title' />
-          <input placeholder='story' />
+          <input onChange={this.changeHandler} name='title' value={this.state.story.title} placeholder='title' />
+          <input onChange={this.changeHandler} name='description' value={this.state.story.description} placeholder='story' />
           <button onClick={this.saveNewStory}>Save</button>
         </Popup>
       </div>

@@ -65,9 +65,6 @@ class GridviewComponent extends React.Component {
         </ListviewComponentContainer>
         <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeStory}>
           <div>
-            <a onClick={this.closeStory}>
-              &times;
-            </a>
             <div>{this.props.story.title}</div>
             <div>{this.props.story.country}</div>
             <div>{this.props.story.description}</div>

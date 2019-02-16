@@ -70,14 +70,11 @@ class ListviewComponent extends React.Component {
           </ContentContainer>
         </ListviewComponentContainer>
         <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeStory}>
-          <div>
-            <a onClick={this.closeStory}>
-              &times;
-            </a>
-            <div>{this.props.story.title}</div>
-            <div>{this.props.story.country}</div>
-            <div>{this.props.story.description}</div>
-          </div>
+          <h1>{this.props.story.title}</h1>
+          <h2>{this.props.story.country}</h2>
+          <p>{this.props.story.description}</p>
+          <button>Edit</button>
+          <button>Delete</button>
         </Popup>
       </div>
     );

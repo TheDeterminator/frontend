@@ -3,16 +3,17 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   width: 100%;
-  height: 75px;
+  color: #FFF;
+  padding: 10px 30px;
   background-color: #1363A8;
-  box-shadow: 0px 3px 1px #0F5080;
+  z-index: 2;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
-const LogoContainer = styled.div`
-  width: 90%;
-  display: flex;
+const LogoContainer = styled.a`
+  text-decoration: none;
+  font-size: 36px;
 `
 
 const Header = () => {

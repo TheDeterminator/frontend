@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Popup from 'reactjs-popup';
+
 const ListviewComponentContainer = styled.div`
   width: 175px;
   height: 175px;
@@ -29,17 +31,51 @@ const Description = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
 `
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+`
 
-const GridviewComponent = (props) => {
-  return (
-    <ListviewComponentContainer>
-      <ImageContainer>Picture</ImageContainer>
-      <Content>
-        <div>{props.story.title}</div>
-        <Description>{props.story.description}</Description>
-      </Content>
-    </ListviewComponentContainer>
-  );
+class GridviewComponent extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      open: false
+    }
+  }
+
+  openStory = e => {
+    this.setState({ open: true });
+  }
+
+  closeStory = e => {
+    this.setState({ open: false })
+  }
+
+  render(){
+    return (
+      <div>
+        <ListviewComponentContainer onClick={this.openStory}>
+          <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
+          <Content>
+            <div>{this.props.story.title}</div>
+            <Description>{this.props.story.description}</Description>
+          </Content>
+        </ListviewComponentContainer>
+        <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeStory}>
+          <div>
+            <a onClick={this.closeStory}>
+              &times;
+            </a>
+            <div>{this.props.story.title}</div>
+            <div>{this.props.story.country}</div>
+            <div>{this.props.story.description}</div>
+          </div>
+        </Popup>
+      </div>
+    );
+  }
 }
 
 export default GridviewComponent;

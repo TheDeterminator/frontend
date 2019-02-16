@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Popup from 'reactjs-popup';
 
 const ListviewComponentContainer = styled.div`
   max-width: 650px;
@@ -33,20 +34,54 @@ const ContentContainer = styled.div`
   align-items: center;
   width: 75%;
 `
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
 
-const ListviewComponent = (props) => {
-  return (
-    <ListviewComponentContainer>
-      <ImageContainer>Picture</ImageContainer>
-      <ContentContainer>
-        <div>{props.story.title}</div>
-        <div>{props.story.country}</div>
-        <Description>
-          {props.story.description}
-        </Description>
-      </ContentContainer>
-    </ListviewComponentContainer>
-  );
+class ListviewComponent extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      open: false
+    }
+  }
+
+  openStory = e => {
+    this.setState({ open: true });
+  }
+
+  closeStory = e => {
+    this.setState({ open: false })
+  }
+
+  render(){
+    return (
+      <div>
+        <ListviewComponentContainer onClick={this.openStory}>
+          <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
+          <ContentContainer>
+            <div>{this.props.story.title}</div>
+            <div>{this.props.story.country}</div>
+            <Description>
+              {this.props.story.description}
+            </Description>
+          </ContentContainer>
+        </ListviewComponentContainer>
+        <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeStory}>
+          <div>
+            <a onClick={this.closeStory}>
+              &times;
+            </a>
+            <div>{this.props.story.title}</div>
+            <div>{this.props.story.country}</div>
+            <div>{this.props.story.description}</div>
+          </div>
+        </Popup>
+      </div>
+    );
+  }
 }
 
 export default ListviewComponent;

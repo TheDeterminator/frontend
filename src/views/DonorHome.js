@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
+import {getGlobalStories} from '../actions';
 
 import GridviewComponent from '../components/GridviewComponent';
 
@@ -14,17 +15,18 @@ const GridviewContainer = styled.div`
 `
 
 class DonorHome extends React.Component {
-  constructor(){
-    super();
-    this.state = {
+  constructor(props){
+    super(props);
+  }
 
-    }
+  componentDidMount(){
+    this.props.getGlobalStories();
   }
 
   render(){
     return (
       <GridviewContainer>
-        {this.props.stories.map(story => <GridviewComponent story={story}/>)}
+        {this.props.globalStories.map(story => <GridviewComponent story={story}/>)}
       </GridviewContainer>
     );
   }
@@ -32,8 +34,8 @@ class DonorHome extends React.Component {
 
 const mstp = (state) => {
   return {
-    stories: state.testData
+    globalStories: state.globalStories
   };
 }
 
-export default connect(mstp, null)(DonorHome)
+export default connect(mstp, {getGlobalStories: getGlobalStories})(DonorHome)

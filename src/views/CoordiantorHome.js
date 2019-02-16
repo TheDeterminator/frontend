@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
+import {getGlobalStories} from '../actions'
 
 import ListviewComponent from '../components/ListviewComponent';
 
@@ -11,20 +12,20 @@ const ListContainer = styled.div`
 `
 
 class CoordinatorHome extends React.Component {
-  constructor(){
-    super();
-    this.state = {
+  constructor(props){
+    super(props);
+  }
 
-    }
+  componentDidMount(){
+    this.props.getGlobalStories();
   }
 
   render(){
     return (
       <div>
         <ListContainer>
-          {this.props.stories.map(story => <ListviewComponent story={story}/>)}
+          {this.props.globalStories.map(story => <ListviewComponent story={story}/>)}
         </ListContainer>
-        
       </div>
     );
   }
@@ -32,8 +33,8 @@ class CoordinatorHome extends React.Component {
 
 const mstp = (state) => {
   return {
-    stories: state.testData
+    globalStories: state.globalStories
   };
 }
 
-export default connect(mstp, null)(CoordinatorHome)
+export default connect(mstp, {getGlobalStories: getGlobalStories})(CoordinatorHome)

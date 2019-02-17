@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import UserTypeSelection from '../components/UserTypeSelection';
 import SignUpModal from '../components/SignUpModal';

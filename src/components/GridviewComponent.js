@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import {Link} from 'react-router-dom';
 import Popup from 'reactjs-popup';
 
 const ListviewComponentContainer = styled.div`
@@ -56,13 +56,15 @@ class GridviewComponent extends React.Component {
   render(){
     return (
       <div>
-        <ListviewComponentContainer onClick={this.openStory}>
-          <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
-          <Content>
-            <div>{this.props.story.title}</div>
-            <Description>{this.props.story.description}</Description>
-          </Content>
-        </ListviewComponentContainer>
+        <Link to={`/home/donor/story/${this.props.story.id}`}>
+          <ListviewComponentContainer onClick={this.openStory}>
+            <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
+            <Content>
+              <div>{this.props.story.title}</div>
+              <Description>{this.props.story.description}</Description>
+            </Content>
+          </ListviewComponentContainer>
+        </Link>
         <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeStory}>
           <div>
             <div>{this.props.story.title}</div>

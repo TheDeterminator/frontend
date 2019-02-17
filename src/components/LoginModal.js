@@ -63,7 +63,7 @@ class LoginModal extends React.Component {
           <LoginButton type='submit'>Login</LoginButton>
         </form>
         <div>
-          <span>Not registered? <a href=''>Sign Up</a></span>
+          <span>Not registered? <a href='#'>Sign Up</a></span>
         </div>
       </LoginContainer>
     );

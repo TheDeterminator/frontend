@@ -26,7 +26,7 @@ class DonorHome extends React.Component {
   render(){
     return (
       <GridviewContainer>
-        {this.props.globalStories.map(story => <GridviewComponent story={story}/>)}
+        {this.props.globalStories.map(story => <GridviewComponent key={story.id} story={story}/>)}
       </GridviewContainer>
     );
   }

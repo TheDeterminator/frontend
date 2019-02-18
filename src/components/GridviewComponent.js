@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import Popup from 'reactjs-popup';
 
 const ListviewComponentContainer = styled.div`
   width: 175px;
   height: 175px;
-  border: 1px solid #000;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -15,7 +13,6 @@ const ListviewComponentContainer = styled.div`
 const ImageContainer = styled.div`
   width: 175px;
   height: 50px;
-  border-bottom: 1px solid #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +22,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   height: 125px;
+  background-color: #D1DAE5;
 `
 const Description = styled.p`
   width: 80%;
@@ -40,24 +38,13 @@ const Image = styled.img`
 class GridviewComponent extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      open: false
-    }
-  }
-
-  openStory = e => {
-    this.setState({ open: true });
-  }
-
-  closeStory = e => {
-    this.setState({ open: false })
   }
 
   render(){
     return (
       <div>
-        <Link to={`/home/donor/story/${this.props.story.id}`}>
-          <ListviewComponentContainer onClick={this.openStory}>
+        <Link to={`/home/donor/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+          <ListviewComponentContainer>
             <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
             <Content>
               <div>{this.props.story.title}</div>
@@ -65,13 +52,6 @@ class GridviewComponent extends React.Component {
             </Content>
           </ListviewComponentContainer>
         </Link>
-        <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeStory}>
-          <div>
-            <div>{this.props.story.title}</div>
-            <div>{this.props.story.country}</div>
-            <div>{this.props.story.description}</div>
-          </div>
-        </Popup>
       </div>
     );
   }

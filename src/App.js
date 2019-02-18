@@ -13,7 +13,8 @@ import RegistrationPage from './views/RegistrationPage'
 import LoginModal from './components/LoginModal';
 import CoordinatorHome from './views/CoordiantorHome';
 import DonorHome from './views/DonorHome';
-import StoryView from './components/StoryView';
+import StoryViewDonor from './components/StoryViewDonor';
+import StoryViewCoordinator from './components/StoryViewCoordinator';
 
 
 class App extends Component {
@@ -25,7 +26,8 @@ class App extends Component {
         <Route exact path='/login' component={LoginModal} />
         <Route exact path='/home/coordinator' component={CoordinatorHome} />
         <Route exact path='/home/donor' component={DonorHome} />
-        <Route exact path='/home/donor/story/:id' component={StoryView} />
+        <Route exact path='/home/donor/story/:id' component={StoryViewDonor} />
+        <Route exact path='/home/coordinator/story/:id' component={StoryViewCoordinator} />
       </div>
     );
   }

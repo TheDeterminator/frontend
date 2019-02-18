@@ -62,7 +62,7 @@ class CoordinatorHome extends React.Component {
     return (
       <div>
         <ListContainer>
-          {this.props.coordinatorStories.map(story => <ListviewComponent story={story}/>)}
+          {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}
         </ListContainer>
         <NewStoryButton onClick={this.openNewStory}>+ New Story</NewStoryButton>
         <Popup open={this.state.open} closeOnDocumentClick onClose={this.closeNewStory}>

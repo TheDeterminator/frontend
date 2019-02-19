@@ -49,7 +49,7 @@ class ListviewComponent extends React.Component {
       <div>
         <Link to={`/home/coordinator/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
           <ListviewComponentContainer onClick={this.openStory}>
-            <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
+            <ImageContainer><Image src={this.props.story.small_image}/></ImageContainer>
             <ContentContainer>
               <div>{this.props.story.title}</div>
               <div>{this.props.story.country}</div>

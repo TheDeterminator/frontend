@@ -45,7 +45,7 @@ class GridviewComponent extends React.Component {
       <div>
         <Link to={`/home/donor/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
           <ListviewComponentContainer>
-            <ImageContainer><Image src={this.props.story.image}/></ImageContainer>
+            <ImageContainer><Image src={this.props.story.small_image}/></ImageContainer>
             <Content>
               <div>{this.props.story.title}</div>
               <Description>{this.props.story.description}</Description>

@@ -29,6 +29,7 @@ export const NEW_STORY = 'NEW_STORY';
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const DELETE_STORY = 'DELETE_STORY';
+export const UPDATE_STORY = 'UPDATE_STORY';
 
 export const getGlobalStories = () => dispatch => {
   axios
@@ -68,7 +69,7 @@ export const newStory = (id, story) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      console.log('New Story error: ', err);
     });
 }
 
@@ -111,4 +112,18 @@ export const deleteStory = (storyID) => dispatch => {
   .catch(err => {
     console.log("Deletion Error: ", err);
   });
+}
+
+export const updateStory = (storyID, story) => dispatch => {
+  axios
+    .put(`https://bountiful-backend.herokuapp.com/story/${storyID}`, story)
+    .then(response => {
+      dispatch({
+        type: UPDATE_STORY,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
 }

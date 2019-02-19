@@ -26,6 +26,7 @@ const Button = styled.button`
   border-radius: 25px;
   margin-top: 25px;
   background-color: #FF7F50;
+  width: 150px;
 `
 
 class StoryViewDonor extends React.Component {
@@ -47,7 +48,7 @@ class StoryViewDonor extends React.Component {
   render(){
     return (
       <Background>
-        <ImageBanner src={this.state.seletedStory.image}/>
+        <ImageBanner src={this.state.seletedStory.large_image}/>
         <StoryContainer>
           <h1>{this.state.seletedStory.title}</h1>
           <h2>{this.state.seletedStory.country}</h2>

@@ -1,15 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {getCoordinatorStories, newStory} from '../actions'
+import {getCoordinatorStories, newStory} from '../actions';
+import {withRouter} from 'react-router-dom';
 import Popup from 'reactjs-popup';
-
-// username: 'nicholl',
-// password: 'rHUnhgFbkGRLNVyX',
-// email: 'Nicholl.OblitasCosta@p3foundation.org',
-// role: 'Coordinator',
-// country: 'Kiribati',
-// organization_title: 'CEO'
 
 import ListviewComponent from '../components/ListviewComponent';
 
@@ -47,7 +41,7 @@ class CoordinatorHome extends React.Component {
 
   saveNewStory = e => {
     this.setState({open: false});
-    this.props.newStory('3', this.state.story);
+    this.props.newStory('2', this.state.story);
   }
 
   changeHandler = e => {
@@ -55,7 +49,7 @@ class CoordinatorHome extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getCoordinatorStories('3');
+    this.props.getCoordinatorStories('2');
   }
 
   render(){
@@ -81,4 +75,4 @@ const mstp = (state) => {
   };
 }
 
-export default connect(mstp, {getCoordinatorStories: getCoordinatorStories, newStory: newStory})(CoordinatorHome)
+export default withRouter(connect(mstp, {getCoordinatorStories: getCoordinatorStories, newStory: newStory})(CoordinatorHome))

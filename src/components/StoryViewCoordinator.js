@@ -1,11 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getCoordinatorStories} from '../actions';
+import {getCoordinatorStories, updateStory} from '../actions';
 import styled from 'styled-components';
+import {withRouter} from 'react-router-dom';
 
 const StoryContainer = styled.div`
   max-width: 800px;
   widht: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0 auto;
 `
 const ImageBanner = styled.img`
@@ -26,14 +30,36 @@ const Button = styled.button`
   border-radius: 25px;
   margin-top: 25px;
   background-color: #FF7F50;
+  width: 150px;
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 325px;
+  justify-content: space-between;
+`
+const DescriptionEdit = styled.textarea`
+  width: 800px;
+  height: 400px;
+  border: none;
+  border-radius: 5px;
 `
 
 class StoryViewCoordinator extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      seletedStory: {}
+      seletedStory: {},
+      story: {
+        title: ``,
+        description: ``
+      },
+      edit: false
     }
+  }
+
+  changeHandler = e => {
+    this.setState({story: {...this.state.story ,[e.target.name] : e.target.value}})
   }
 
   componentDidMount(){
@@ -43,17 +69,43 @@ class StoryViewCoordinator extends React.Component {
     });
   }
 
+  editStory = e => {
+    this.setState({
+      edit: true,
+      story: {
+        title: this.state.seletedStory.title,
+        description: this.state.seletedStory.description
+      }
+    });
+  }
+
+  saveStory = e => {
+    this.props.updateStory(this.state.seletedStory.id, this.state.story);
+    this.setState({
+      edit: false
+    });
+  }
+
   render(){
     return (
       <Background>
-        <ImageBanner src={this.state.seletedStory.image}/>
-        <StoryContainer>
+        <ImageBanner src={this.state.seletedStory.large_image}/>
+        {!this.state.edit ? <StoryContainer>
           <h1>{this.state.seletedStory.title}</h1>
           <h2>{this.state.seletedStory.country}</h2>
           <p>{this.state.seletedStory.description}</p>
-          <Button>Edit</Button>
-          <Button>Delete</Button>
-        </StoryContainer>
+          <ButtonContainer>
+            <Button onClick={this.editStory}>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonContainer>
+        </StoryContainer> :
+        <StoryContainer>
+          <form>
+            <input onChange={this.changeHandler} name='title' value={this.state.story.title} />
+            <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
+            <Button onClick={this.saveStory}>Save</Button>
+          </form>
+        </StoryContainer>}
       </Background>
     );
   }
@@ -64,4 +116,4 @@ const mstp = (state) => {
     coordinatorStories: state.coordinatorStories
   };
 }
-export default connect(mstp, {getCoordinatorStories: getCoordinatorStories})(StoryViewCoordinator);
+export default withRouter(connect(mstp, {getCoordinatorStories: getCoordinatorStories, updateStory: updateStory})(StoryViewCoordinator));

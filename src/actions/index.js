@@ -30,6 +30,7 @@ export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const DELETE_STORY = 'DELETE_STORY';
 export const UPDATE_STORY = 'UPDATE_STORY';
+export const GET_STORY_BY_ID = 'GET_STORY_BY_ID';
 
 export const getGlobalStories = () => dispatch => {
   axios
@@ -51,6 +52,21 @@ export const getCoordinatorStories = (id) => dispatch => {
     .then(response => {
       dispatch({
         type: GET_COORDINATOR_STORIES,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+export const getStoryByID = (id) => dispatch => {
+  axios
+    .get(`https://bountiful-backend.herokuapp.com/story/${id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({
+        type: GET_STORY_BY_ID,
         payload: response.data
       });
     })

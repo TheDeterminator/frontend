@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getCoordinatorStories, updateStory} from '../actions';
 import styled from 'styled-components';
-import {withRouter} from 'react-router-dom';
 
 const StoryContainer = styled.div`
   max-width: 800px;
@@ -116,4 +115,4 @@ const mstp = (state) => {
     coordinatorStories: state.coordinatorStories
   };
 }
-export default withRouter(connect(mstp, {getCoordinatorStories: getCoordinatorStories, updateStory: updateStory})(StoryViewCoordinator));
+export default connect(mstp, {getCoordinatorStories: getCoordinatorStories, updateStory: updateStory})(StoryViewCoordinator);

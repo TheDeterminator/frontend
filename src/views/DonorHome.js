@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {getGlobalStories} from '../actions';
-
 import GridviewComponent from '../components/GridviewComponent';
 
 const GridviewContainer = styled.div`
@@ -38,4 +37,4 @@ const mstp = (state) => {
   };
 }
 
-export default connect(mstp, {getGlobalStories: getGlobalStories})(DonorHome)
+export default connect(mstp, {getGlobalStories: getGlobalStories})(DonorHome);

@@ -36,6 +36,12 @@ const DescriptionEdit = styled.textarea`
   border: none;
   border-radius: 5px;
 `
+const TitleEdit = styled.input`
+  width: 800px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+`
 
 class NewStory extends React.Component {
   constructor(props){
@@ -61,8 +67,11 @@ class NewStory extends React.Component {
     return (
       <Background>
         <StoryContainer>
+          <h1>New Story</h1>
           <form onSubmit={this.saveStory}>
-            <input onChange={this.changeHandler} name='title' value={this.state.story.title} />
+            <div>Title</div>
+            <TitleEdit onChange={this.changeHandler} name='title' value={this.state.story.title} />
+            <div>Description</div>
             <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
             <Button type='submit'>Save</Button>
           </form>

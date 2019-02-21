@@ -32,9 +32,9 @@ export const DELETE_STORY = 'DELETE_STORY';
 export const UPDATE_STORY = 'UPDATE_STORY';
 export const GET_STORY_BY_ID = 'GET_STORY_BY_ID';
 
-export const getGlobalStories = () => dispatch => {
+export const getGlobalStories = options => dispatch => {
   axios
-    .get('https://bountiful-backend.herokuapp.com/donor/home')
+    .get('https://bountiful-backend.herokuapp.com/donor/home', options)
     .then(response => {
       dispatch({
         type: GET_GLOBAL_STORIES,
@@ -46,9 +46,9 @@ export const getGlobalStories = () => dispatch => {
     });
 }
 
-export const getCoordinatorStories = (id) => dispatch => {
+export const getCoordinatorStories = (id, options) => dispatch => {
   axios
-    .get(`https://bountiful-backend.herokuapp.com/coord/${id}/home`)
+    .get(`https://bountiful-backend.herokuapp.com/coord/${id}/home`, options)
     .then(response => {
       dispatch({
         type: GET_COORDINATOR_STORIES,
@@ -75,9 +75,9 @@ export const getStoryByID = (id) => dispatch => {
     });
 }
 
-export const newStory = (id, story) => dispatch => {
+export const newStory = (id, story, options) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/coord/${id}`, story)
+    .post(`https://bountiful-backend.herokuapp.com/coord/${id}`, story, options)
     .then(response => {
       dispatch({
         type: NEW_STORY,
@@ -93,8 +93,11 @@ export const login = (user) => dispatch => {
   axios
     .post(`https://bountiful-backend.herokuapp.com/login`, user)
     .then(response => {
+      localStorage.setItem('jwt', response.data.token);
+      localStorage.setItem('user_id', response.data.user_id);
       dispatch({
-        type: LOGIN
+        type: LOGIN,
+        payload: true
       });
     })
     .catch(err => {
@@ -102,9 +105,9 @@ export const login = (user) => dispatch => {
     });
 }
 
-export const register = (user) => dispatch => {
+export const register = (newUser) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/register`, user)
+    .post(`https://bountiful-backend.herokuapp.com/register`, newUser)
     .then(response => {
       dispatch({
         type: REGISTER

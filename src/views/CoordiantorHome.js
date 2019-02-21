@@ -24,15 +24,22 @@ class CoordinatorHome extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getCoordinatorStories('2');
+    const token = localStorage.getItem('jwt');
+    const userID = localStorage.getItem('user_id');
+    const options = {
+      header: {
+        Authorization: token
+      }
+    }
+    this.props.getCoordinatorStories(userID , options);
   }
 
   render(){
     return (
       <div>
-        <ListContainer>
+        {this.props.coordinatorStories ? <ListContainer>
           {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}
-        </ListContainer>
+        </ListContainer> : <div>Loading Data...</div>}
         <Link to='/home/coordinator/new'>
           <NewStoryButton>+ New Story</NewStoryButton>
         </Link>

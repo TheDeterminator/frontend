@@ -19,21 +19,32 @@ class DonorHome extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getGlobalStories();
+    const token = localStorage.getItem('jwt');
+    const options = {
+      header: {
+        Authorization: token
+      }
+    }
+    console.log(options);
+    this.props.getGlobalStories(options);
+    console.log(this.props.globalStories);
   }
 
   render(){
     return (
-      <GridviewContainer>
-        {this.props.globalStories.map(story => <GridviewComponent key={story.id} story={story}/>)}
-      </GridviewContainer>
+      <div>
+        {this.props.globalStories ? <GridviewContainer>
+          {this.props.globalStories.map(story => <GridviewComponent key={story.id} story={story}/>)}
+        </GridviewContainer> : <div>Loading Data...</div>}
+      </div>
     );
   }
 }
 
 const mstp = (state) => {
   return {
-    globalStories: state.globalStories
+    globalStories: state.globalStories,
+    user: state.user
   };
 }
 

@@ -17,7 +17,7 @@ class RegistrationPage extends React.Component {
 
   selectCoordinator = e => {
     this.setState({
-      userType: 'coordinator',
+      userType: 'Coordinator',
       selectionViewToggle: false,
       coordinator: true
     });
@@ -25,7 +25,7 @@ class RegistrationPage extends React.Component {
 
   selectDonor = e => {
     this.setState({
-      userType: 'donor',
+      userType: 'Donor',
       selectionViewToggle: false
     });
   }

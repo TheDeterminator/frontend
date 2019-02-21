@@ -13,7 +13,7 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   flex-direction: column;
 `
@@ -99,9 +99,9 @@ class SignUpModal extends React.Component{
           <Input onChange={this.changeHandler} name='username' value={this.state.username} placeholder='Username'/>
           <Input onChange={this.changeHandler} name='password' value={this.state.password} placeholder='Password' type='password' />
           <Input onChange={this.changeHandler} name='confirmPassword' value={this.state.confirmPassword} placeholder='Confirm Password' type='password' />
-          {this.props.userType === 'donor' ? <Button>Sign Up</Button> : <Button onClick={this.props.continueButton}>Continue</Button>}
+          {this.props.userType === 'Donor' ? <Button>Sign Up</Button> : <Button onClick={this.props.continueButton}>Continue</Button>}
         </Form>}
-        {this.props.userType === 'coordinator' && this.props.coordinatorSelected ? <Form>
+        {this.props.userType === 'Coordinator' && this.props.coordinatorSelected ? <Form>
           <Input onChange={this.changeHandler} name='title' value={this.state.title} placeholder='Organization Title' />
           <Select onChange={this.selectChangeHandler} value={this.state.country}>
             {this.props.countries.map(country => <option value={country}>{country}</option>)}

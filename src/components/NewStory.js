@@ -60,7 +60,14 @@ class NewStory extends React.Component {
 
   saveStory = e => {
     e.preventDefault();
-    this.props.newStory('2', this.state.story);
+    const token = localStorage.getItem('jwt');
+    const userID = localStorage.getItem('user_id');
+    const options = {
+      header: {
+        Authorization: token
+      }
+    }
+    this.props.newStory(userID, this.state.story, options);
   }
 
   render(){
@@ -81,4 +88,10 @@ class NewStory extends React.Component {
   }
 }
 
-export default connect(null, {newStory: newStory})(NewStory);
+const mstp = state => {
+  return ({
+    user: state.user
+  });
+}
+
+export default connect(mstp, {newStory: newStory})(NewStory);

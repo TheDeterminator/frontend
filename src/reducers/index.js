@@ -10,25 +10,26 @@ import { GET_GLOBAL_STORIES,
 const initialState = {
   globalStories: [],
   coordinatorStories: [],
-  storyByID: {}
+  storyByID: {},
+  userLoggedIn: false
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
       case GET_GLOBAL_STORIES:
-        return {globalStories: action.payload};
+        return {...state, globalStories: action.payload};
       case GET_COORDINATOR_STORIES:
-        return {coordinatorStories: action.payload};
+        return {...state, coordinatorStories: action.payload};
       case GET_STORY_BY_ID:
-        return {storyByID: action.payload};
+        return {...state, storyByID: action.payload};
       case NEW_STORY:
-        return {coordinatorStories: action.payload};
+        return {...state, coordinatorStories: action.payload};
       case DELETE_STORY:
-        return {coordinatorStories: action.payload};
+        return {...state, coordinatorStories: action.payload};
       case UPDATE_STORY:
-        return {coordinatorStories: action.payload};
+        return {...state, coordinatorStories: action.payload};
       case LOGIN:
-        return {...state};
+        return {...state, userLoggedIn: action.payload};
       case REGISTER:
         return {...state};
       default:

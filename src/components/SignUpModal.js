@@ -84,6 +84,7 @@ class SignUpModal extends React.Component{
       country: this.state.country,
       organization_title: this.state.country
     });
+    this.props.history.push('/login');
   }
 
   registerNewDonor = e => {
@@ -93,6 +94,7 @@ class SignUpModal extends React.Component{
       email: this.state.email,
       role: this.props.userType,
     });
+    this.props.history.push('/login');
   }
 
   render(){

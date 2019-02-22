@@ -72,7 +72,11 @@ class StoryViewCoordinator extends React.Component {
 
   editStory = e => {
     this.setState({
-      edit: true
+      edit: true,
+      story: {
+        title: this.props.storyByID.title,
+        description: this.props.storyByID.description
+      }
     });
   }
 
@@ -114,8 +118,8 @@ class StoryViewCoordinator extends React.Component {
         </StoryContainer> :
         <StoryContainer>
           <form>
-            <input onChange={this.changeHandler} name='title' value={this.props.storyByID.title} />
-            <DescriptionEdit onChange={this.changeHandler} name='description' value={this.props.storyByID.description}></DescriptionEdit>
+            <input onChange={this.changeHandler} name='title' value={this.state.story.title} />
+            <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
             <Button onClick={this.saveStory}>Save</Button>
           </form>
         </StoryContainer>}</div> : <div>Loading Data...</div>}

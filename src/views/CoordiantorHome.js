@@ -24,7 +24,14 @@ class CoordinatorHome extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getCoordinatorStories('1');
+    const token = localStorage.getItem('jwt');
+    const userID = localStorage.getItem('user_id');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.getCoordinatorStories(userID, options);
   }
 
   render(){

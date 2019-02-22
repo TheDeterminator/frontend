@@ -17,7 +17,8 @@ const initialState = {
   globalStories: [],
   coordinatorStories: [],
   storyByID: {},
-  userLoggedIn: false
+  userLoggedIn: false,
+  user: {}
 }
 
 export default (state = initialState, action) => {
@@ -34,6 +35,8 @@ export default (state = initialState, action) => {
         return {...state, coordinatorStories: action.payload};
       case UPDATE_STORY:
         return {...state, coordinatorStories: action.payload};
+      case GET_COORD_USER:
+        return {...state, user: action.payload}
       case LOGIN:
         return {...state, userLoggedIn: action.payload};
       case REGISTER:

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { login } from '../actions'
+import { login, getCoordUser } from '../actions'
 
 const LoginContainer = styled.div`
   width: 300px;
@@ -51,6 +51,22 @@ class LoginModal extends React.Component {
   loginHandler = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
+    const token = localStorage.getItem('jwt');
+    const userID = localStorage.getItem('user_id');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    };
+    console.log('before get coord user', userID);
+    setTimeout(this.props.getCoordUser(userID, options), 2500);
+    setTimeout(() => {
+      if(this.props.user.role === 'Coordinator'){
+        this.props.history.push('/home/coordinator');
+      }else {
+        this.props.historyl.push('/home/donor');
+      }
+    },2500)
   }
 
   render(){
@@ -70,4 +86,10 @@ class LoginModal extends React.Component {
   }
 }
 
-export default connect(null, {login: login})(LoginModal);
+const mstp = state => {
+  return ({
+    user: state.user
+  });
+}
+
+export default connect(mstp, {login: login, getCoordUser: getCoordUser})(LoginModal);

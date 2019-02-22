@@ -163,6 +163,7 @@ export const getCoordUser = (id, options) => dispatch => {
   axios
     .get(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
     .then(response => {
+      console.log(response);
       dispatch({
         type: GET_COORD_USER,
         payload: response.data

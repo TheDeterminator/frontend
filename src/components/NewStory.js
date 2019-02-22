@@ -60,14 +60,7 @@ class NewStory extends React.Component {
 
   saveStory = e => {
     e.preventDefault();
-    const token = localStorage.getItem('jwt');
-    const userID = localStorage.getItem('user_id');
-    const options = {
-      header: {
-        Authorization: token
-      }
-    }
-    this.props.newStory(userID, this.state.story, options);
+    this.props.newStory('1', this.state.story);
   }
 
   render(){

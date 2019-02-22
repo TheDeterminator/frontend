@@ -1,27 +1,56 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
-  max-width: 1430px;
+const HeaderContainer = styled.header`
   width: 100%;
-  color: #FFF;
-  padding: 10px 30px;
-  background-color: #1363A8;
-  z-index: 2;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  background: #1363A8;
+  top: 0;
+  position: sticky;
+  z-index: 10;
+  @media (min-width: 801px){
+    max-width: 1430px;
+  }
+`
+const HeaderWrapper = styled.a`
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  @media (min-width: 801px){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+`
+const Logo = styled.div`
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
-const LogoContainer = styled.a`
-  text-decoration: none;
-  font-size: 36px;
+  @media (max-width: 800px) and (min-width: 768px), (min-width: 801px){
+    width: auto;
+  }
 `
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <LogoContainer>Bountiful</LogoContainer>
-      <button>Sign Out</button>
+      <HeaderWrapper>
+        <Logo>
+          <div>Bountiful</div>
+        </Logo>
+      </HeaderWrapper>
     </HeaderContainer>
   );
 }

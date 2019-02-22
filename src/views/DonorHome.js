@@ -19,6 +19,7 @@ class DonorHome extends React.Component {
   }
 
   componentDidMount(){
+    console.log('start of componene did mount');
     const token = localStorage.getItem('jwt');
     const options = {
       header: {
@@ -43,8 +44,7 @@ class DonorHome extends React.Component {
 
 const mstp = (state) => {
   return {
-    globalStories: state.globalStories,
-    user: state.user
+    globalStories: state.globalStories
   };
 }
 

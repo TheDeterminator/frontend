@@ -18,6 +18,7 @@ import StoryViewDonorV2 from './components/StoryViewDonorV2';
 import StoryViewCoordinator from './components/StoryViewCoordinator';
 import StoryViewCoordinatorV2 from './components/StoryViewCoordinatorV2';
 import NewStory from './components/NewStory';
+import Profile from './components/Profile';
 
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
         <Route exact path='/home/donor/story/:id' component={StoryViewDonorV2} />
         <Route exact path='/home/coordinator/story/:id' component={StoryViewCoordinatorV2} />
         <Route exact path='/home/coordinator/new' component={NewStory} />
+        <Route exact path='/user' component={Profile} />
       </div>
     );
   }

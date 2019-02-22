@@ -32,17 +32,18 @@ export const DELETE_STORY = 'DELETE_STORY';
 export const UPDATE_STORY = 'UPDATE_STORY';
 export const GET_STORY_BY_ID = 'GET_STORY_BY_ID';
 
-export const getGlobalStories = options => dispatch => {
+export const getGlobalStories = (options) => dispatch => {
   axios
     .get('https://bountiful-backend.herokuapp.com/donor/home', options)
     .then(response => {
+      console.log(response);
       dispatch({
         type: GET_GLOBAL_STORIES,
         payload: response.data
       });
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error: ', err);
     });
 }
 
@@ -50,13 +51,14 @@ export const getCoordinatorStories = (id, options) => dispatch => {
   axios
     .get(`https://bountiful-backend.herokuapp.com/coord/${id}/home`, options)
     .then(response => {
+      console.log(response);
       dispatch({
         type: GET_COORDINATOR_STORIES,
         payload: response.data
       });
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error: ', err);
     });
 }
 

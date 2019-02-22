@@ -114,9 +114,9 @@ export const login = (user, options) => dispatch => {
     });
 }
 
-export const register = (newUser, options) => dispatch => {
+export const register = (newUser) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/register`, newUser, options)
+    .post(`https://bountiful-backend.herokuapp.com/register`, newUser)
     .then(response => {
       console.log(response);
       dispatch({

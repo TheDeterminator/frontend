@@ -75,7 +75,7 @@ class SignUpModal extends React.Component{
     });
   }
 
-  registerNewUser = e => {
+  registerNewCoord = e => {
     this.props.register({
       username: this.state.username,
       password: this.state.password,
@@ -83,6 +83,15 @@ class SignUpModal extends React.Component{
       role: this.props.userType,
       country: this.state.country,
       organization_title: this.state.country
+    });
+  }
+
+  registerNewDonor = e => {
+    this.props.register({
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      role: this.props.userType,
     });
   }
 
@@ -99,14 +108,14 @@ class SignUpModal extends React.Component{
           <Input onChange={this.changeHandler} name='username' value={this.state.username} placeholder='Username'/>
           <Input onChange={this.changeHandler} name='password' value={this.state.password} placeholder='Password' type='password' />
           <Input onChange={this.changeHandler} name='confirmPassword' value={this.state.confirmPassword} placeholder='Confirm Password' type='password' />
-          {this.props.userType === 'Donor' ? <Button>Sign Up</Button> : <Button onClick={this.props.continueButton}>Continue</Button>}
+          {this.props.userType === 'Donor' ? <Button onClick={this.registerNewDonor}>Sign Up</Button> : <Button onClick={this.props.continueButton}>Continue</Button>}
         </Form>}
         {this.props.userType === 'Coordinator' && this.props.coordinatorSelected ? <Form>
           <Input onChange={this.changeHandler} name='title' value={this.state.title} placeholder='Organization Title' />
           <Select onChange={this.selectChangeHandler} value={this.state.country}>
             {this.props.countries.map(country => <option value={country}>{country}</option>)}
           </Select>
-          <Button onClick={this.registerNewUser}>Sign Up</Button>
+          <Button onClick={this.registerNewCoord}>Sign Up</Button>
           <Button onClick={this.props.backButton}>Back</Button>
         </Form>: null}
       </LoginContainer>

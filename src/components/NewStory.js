@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {newStory} from '../actions';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StoryContainer = styled.div`
@@ -68,6 +69,7 @@ class NewStory extends React.Component {
       }
     }
     this.props.newStory(userID, this.state.story, options);
+    this.props.history.push('/home/coordinator');
   }
 
   render(){

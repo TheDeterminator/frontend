@@ -5,7 +5,13 @@ import { GET_GLOBAL_STORIES,
         REGISTER,
         DELETE_STORY,
         UPDATE_STORY,
-        GET_STORY_BY_ID } from '../actions';
+        GET_STORY_BY_ID,
+        GET_COORD_USER,
+        UPDATE_COORD_USER,
+        DELETE_COORD_USER,
+        GET_DONOR_USER,
+        DELETE_DONOR_USER,
+        UPDATE_DONOR_USER } from '../actions';
 
 const initialState = {
   globalStories: [],

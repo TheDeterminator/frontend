@@ -77,7 +77,13 @@ class StoryViewCoordinator extends React.Component {
   }
 
   saveStory = e => {
-    this.props.updateStory(this.props.storyByID.id, this.state.story);
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.updateStory(this.props.storyByID.id, this.state.story, options);
     this.setState({
       edit: false
     });
@@ -90,7 +96,7 @@ class StoryViewCoordinator extends React.Component {
           Authorization: token,
       }
     }
-    this.props.deleteStory(this.props.match.params.id, options);
+    this.props.deleteStory(this.props.storyByID.id, options);
   }
 
   render(){

@@ -31,6 +31,12 @@ export const REGISTER = 'REGISTER';
 export const DELETE_STORY = 'DELETE_STORY';
 export const UPDATE_STORY = 'UPDATE_STORY';
 export const GET_STORY_BY_ID = 'GET_STORY_BY_ID';
+export const GET_COORD_USER = 'GET_COORD_USER';
+export const UPDATE_COORD_USER = 'UPDATE_COORD_USER';
+export const DELETE_COORD_USER = 'DELETE_COORD_USER';
+export const GET_DONOR_USER = 'GET_DONOR_USER';
+export const DELETE_DONOR_USER = 'DELETE_DONOR_USER';
+export const UPDATE_DONOR_USER = 'UPDATE_DONOR_USER';
 
 export const getGlobalStories = options => dispatch => {
   axios
@@ -144,6 +150,88 @@ export const updateStory = (storyID, story, options) => dispatch => {
       dispatch({
         type: UPDATE_STORY,
         payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
+}
+
+////////////////////////////////////
+
+export const getCoordUser = (id, options) => dispatch => {
+  axios
+    .get(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
+    .then(response => {
+      dispatch({
+        type: GET_COORD_USER,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
+}
+export const updateCoordUser = (id, options) => dispatch => {
+  axios
+    .put(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
+    .then(response => {
+      dispatch({
+        type: UPDATE_COORD_USER,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
+}
+export const deleteCoordUser = (id, options) => dispatch => {
+  axios
+    .delete(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
+    .then(response => {
+      dispatch({
+        type: DELETE_COORD_USER,
+        payload: ''
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
+}
+
+export const getDonorUser = (id, options) => dispatch => {
+  axios
+    .get(`https://bountiful-backend.herokuapp.com/donor/${id}`, options)
+    .then(response => {
+      dispatch({
+        type: GET_DONOR_USER,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
+}
+export const updateDonorUser = (id, options) => dispatch => {
+  axios
+    .put(`https://bountiful-backend.herokuapp.com/donor/${id}`, options)
+    .then(response => {
+      dispatch({
+        type: UPDATE_DONOR_USER,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log('Update Error: ', err);
+    });
+}
+export const deleteDonorUser = (id, options) => dispatch => {
+  axios
+    .delete(`https://bountiful-backend.herokuapp.com/donor/${id}`, options)
+    .then(response => {
+      dispatch({
+        type: DELETE_DONOR_USER,
+        payload: ''
       });
     })
     .catch(err => {

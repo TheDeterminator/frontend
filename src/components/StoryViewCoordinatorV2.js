@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getStoryByID, updateStory} from '../actions';
+import {getStoryByID, updateStory, deleteStory} from '../actions';
 import styled from 'styled-components';
 
 const StoryContainer = styled.div`
@@ -52,7 +52,7 @@ class StoryViewCoordinator extends React.Component {
         title: ``,
         description: ``
       },
-      edit: false
+      edit: false,
     }
   }
 
@@ -83,6 +83,16 @@ class StoryViewCoordinator extends React.Component {
     });
   }
 
+  deleteStory = e => {
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.deleteStory(this.props.match.params.id, options);
+  }
+
   render(){
     return (
       <Background>
@@ -93,7 +103,7 @@ class StoryViewCoordinator extends React.Component {
           <p>{this.props.storyByID.description}</p>
           <ButtonContainer>
             <Button onClick={this.editStory}>Edit</Button>
-            <Button>Delete</Button>
+            <Button onClick={this.deleteStory}>Delete</Button>
           </ButtonContainer>
         </StoryContainer> :
         <StoryContainer>
@@ -113,4 +123,4 @@ const mstp = (state) => {
     storyByID: state.storyByID
   };
 }
-export default connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory})(StoryViewCoordinator);
+export default connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory, deleteStory: deleteStory})(StoryViewCoordinator);

@@ -64,7 +64,6 @@ class LoginModal extends React.Component {
       }
     }
     this.props.getCoordUser(id, options);
-    console.log(this.props.user);
   }
 
 

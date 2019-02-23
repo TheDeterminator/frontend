@@ -18,7 +18,13 @@ const Form = styled.form`
       font-size: ${theme.fontSizing.s};
       border: 1px solid ${theme.color.secondaryBgShading};
       border-radius: 5px;
-      //background-color: ${theme.color.primaryBgShading}; 
+    }
+
+    textarea {
+      width: 60%;
+      max-width: 350px;
+      margin: 5px 0;
+      border-radius: 5px;
     }
 
     button {

@@ -97,9 +97,9 @@ export const newStory = (id, story, options) => dispatch => {
     });
 }
 
-export const login = (user, options) => dispatch => {
+export const login = (user) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/login`, user, options)
+    .post(`https://bountiful-backend.herokuapp.com/login`, user)
     .then(response => {
       console.log(response);
       localStorage.setItem('jwt', response.data.token);

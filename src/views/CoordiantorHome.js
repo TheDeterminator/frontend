@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getCoordinatorStories, newStory} from '../actions';
+import { withRouter } from 'react-router-dom';
 
 import ListviewComponent from '../components/ListviewComponent';
 
@@ -21,9 +22,13 @@ const NewStoryButton = styled.button`
 class CoordinatorHome extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      isFetching: true
+    }
   }
 
-  componentDidMount(){
+  async componentDidMount(){
+    console.log("anything");
     const token = localStorage.getItem('jwt');
     const userID = localStorage.getItem('user_id');
     const options = {
@@ -32,12 +37,21 @@ class CoordinatorHome extends React.Component {
       }
     }
     this.props.getCoordinatorStories(userID, options);
+    console.log('Before component mounts', this.props.coordinatorStories);
+    const array = await this.props.getCoordinatorStories(userID, options);
+    console.log(array);
+    console.log('After component mounts', this.props.coordinatorStories);
+    if(array){
+      this.setState({
+        isFetching: false
+      })
+    }
   }
 
   render(){
     return (
       <div>
-        {this.props.coordinatorStories ? <ListContainer>
+        {this.state.isFetching ? <ListContainer>
           {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}
         </ListContainer> : <div>Loading Data...</div>}
         <Link to='/home/coordinator/new'>
@@ -54,4 +68,4 @@ const mstp = (state) => {
   };
 }
 
-export default connect(mstp, {getCoordinatorStories: getCoordinatorStories})(CoordinatorHome);
+export default withRouter(connect(mstp, {getCoordinatorStories: getCoordinatorStories})(CoordinatorHome));

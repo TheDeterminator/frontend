@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getStoryByID, updateStory, deleteStory} from '../actions';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
 const StoryContainer = styled.div`
   max-width: 800px;
@@ -133,4 +134,4 @@ const mstp = (state) => {
     storyByID: state.storyByID
   };
 }
-export default connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory, deleteStory: deleteStory})(StoryViewCoordinator);
+export default withRouter(connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory, deleteStory: deleteStory})(StoryViewCoordinator));

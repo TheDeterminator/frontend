@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
+import theme from '../design/theme';
+
 const ListviewComponentContainer = styled.div`
   width: 175px;
   height: 175px;
@@ -22,7 +24,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   height: 125px;
-  background-color: #D1DAE5;
+  background-color: ${theme.color.primaryBgShading};
 `
 const Description = styled.p`
   width: 80%;

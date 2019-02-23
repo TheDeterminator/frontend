@@ -1,4 +1,4 @@
-const system = {
+const theme = {
   color: {
     primaryColor: '#1363A8',
     primaryDark: '#0F5080',
@@ -9,6 +9,12 @@ const system = {
     emphasis: '#03100D',
     darkText: '#595959',
     lightText: '#FFFFFF'
+  },
+
+  fontStyles: {
+    logoFont: "'Dancing Script', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    headingFont: "Roboto, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    defaultFont: "'Open Sans', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif"
   },
 
   fontSizing: { // Based on CSS default font-resizing of 62.5%
@@ -32,4 +38,4 @@ const system = {
 
 }
 
-export default system
+export default theme

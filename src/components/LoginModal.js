@@ -4,22 +4,9 @@ import { connect } from 'react-redux';
 import { login, getCoordUser } from '../actions';
 import {Redirect} from 'react-router-dom';
 
-import theme from '../design/theme';
+import LoginContainer from '../design/LoginContainer';
 import Form from '../design/Form';
 import Button from '../design/Button';
-
-const LoginContainer = styled.div`
-  width: 90%;
-  max-width: 600px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${theme.color.primaryBgShading};
-  border-radius: 3px;
-  margin: 0 auto;
-`
 
 class LoginModal extends React.Component {
   constructor(props){

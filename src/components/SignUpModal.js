@@ -61,7 +61,7 @@ class SignUpModal extends React.Component{
       username: this.state.username,
       password: this.state.password,
       email: this.state.email,
-      role: this.props.userType,
+      role: this.props.userType
     });
     this.props.history.push('/login');
   }

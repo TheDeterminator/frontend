@@ -14,9 +14,12 @@ const GlobalStyle = createGlobalStyle `
     box-sizing: inherit;
   }
 
-  body {
+  body * {
     padding: 0;
     margin: 0;
+  }
+
+  body {
     font-size: ${theme.fontSizing.s}
   }
 

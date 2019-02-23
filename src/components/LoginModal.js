@@ -37,8 +37,7 @@ class LoginModal extends React.Component {
       credentials: {
         username: ``,
         password: ``
-      },
-      redirect: false
+      }
     }
   }
 
@@ -53,14 +52,18 @@ class LoginModal extends React.Component {
   loginHandler = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
+    this.props.history.push('/home/coordinator');
+  }
+
+  componentDidMount(){
     const token = localStorage.getItem('jwt');
-    const userID = localStorage.getItem('user_id');
-    console.log(userID);
+    const id = localStorage.getItem('user_id');
     const options = {
       headers: {
           Authorization: token,
       }
-    };
+    }
+    this.props.getCoordUser(id, options);
   }
 
 
@@ -88,4 +91,4 @@ const mstp = state => {
   });
 }
 
-export default connect(mstp, {login: login, getCoordUser: getCoordUser})(LoginModal);
+export default connect(null, {login: login, getCoordUser: getCoordUser})(LoginModal);

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getStoryByID, updateStory, deleteStory} from '../actions';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
 const StoryContainer = styled.div`
   max-width: 800px;
@@ -91,6 +92,7 @@ class StoryViewCoordinator extends React.Component {
     this.setState({
       edit: false
     });
+    this.props.history.push(`/home/coordinator/story/${this.props.match.params.id}`);
   }
 
   deleteStory = e => {
@@ -101,6 +103,7 @@ class StoryViewCoordinator extends React.Component {
       }
     }
     this.props.deleteStory(this.props.storyByID.id, options);
+    this.props.history.push(`/home/coordinator/`);
   }
 
   render(){
@@ -133,4 +136,4 @@ const mstp = (state) => {
     storyByID: state.storyByID
   };
 }
-export default connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory, deleteStory: deleteStory})(StoryViewCoordinator);
+export default withRouter(connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory, deleteStory: deleteStory})(StoryViewCoordinator));

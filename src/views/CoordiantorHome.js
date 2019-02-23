@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getCoordinatorStories, newStory} from '../actions';
+import { withRouter } from 'react-router-dom';
 
 import ListviewComponent from '../components/ListviewComponent';
 
@@ -37,7 +38,7 @@ class CoordinatorHome extends React.Component {
   render(){
     return (
       <div>
-        {this.props.coordinatorStories ? <ListContainer>
+        {!this.props.loading ? <ListContainer>
           {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}
         </ListContainer> : <div>Loading Data...</div>}
         <Link to='/home/coordinator/new'>
@@ -50,8 +51,9 @@ class CoordinatorHome extends React.Component {
 
 const mstp = (state) => {
   return {
-    coordinatorStories: state.coordinatorStories
+    coordinatorStories: state.coordinatorStories,
+    loading: state.loading
   };
 }
 
-export default connect(mstp, {getCoordinatorStories: getCoordinatorStories})(CoordinatorHome);
+export default withRouter(connect(mstp, {getCoordinatorStories: getCoordinatorStories})(CoordinatorHome));

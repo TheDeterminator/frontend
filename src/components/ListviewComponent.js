@@ -4,15 +4,19 @@ import {connect} from 'react-redux';
 import {deleteStory} from '../actions';
 import {Link} from 'react-router-dom';
 
+import theme from '../design/theme';
+
 const ListviewComponentContainer = styled.div`
   width: 650px;
   height: 175px;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
-  background-color: #D1DAE5;
+  background-color: ${theme.color.primaryBgShading};
   margin-top: 10px;
   margin-bottom: 10px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 
+  0 7px 20px 0 rgba(0, 0, 0, 0.17);    
 `
 const ImageContainer = styled.div`
   width: 25%;

@@ -4,31 +4,9 @@ import { connect } from 'react-redux';
 import { login } from '../actions';
 import {Link} from 'react-router-dom';
 
-const LoginContainer = styled.div`
-  width: 300px;
-  height: 250px;
-  background-color: #D1DAE5;
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto;
-`
-const Input = styled.input`
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  width: 220px;
-  height: 30px;
-  margin-bottom: 15px;
-`
-const LoginButton = styled.button`
-  width: 220px;
-  height: 35px;
-  border-radius: 5px;
-  background-color: #FF7F50;
-  border: none;
-`
+import LoginContainer from '../design/LoginContainer';
+import Form from '../design/Form';
+import Button from '../design/Button';
 
 class LoginModal extends React.Component {
   constructor(props){
@@ -59,11 +37,11 @@ class LoginModal extends React.Component {
     return (
       <LoginContainer>
         <h1>Login</h1>
-        <form onSubmit={this.loginHandler} method='POST'>
-          <Input onChange={this.changeHandler} placeholder='Username' name='username' value={this.state.credentials.username}/>
-          <Input onChange={this.changeHandler} placeholder='Password' type='password' name='password' value={this.state.credentials.password}/>
-          <LoginButton type='submit'>Login</LoginButton>
-        </form>
+        <Form onSubmit={this.loginHandler} method='POST'>
+          <input onChange={this.changeHandler} placeholder='Username' name='username' value={this.state.credentials.username}/>
+          <input onChange={this.changeHandler} placeholder='Password' type='password' name='password' value={this.state.credentials.password}/>
+          <Button type='submit'>Login</Button>
+        </Form>
         <div>
           <span>Not registered? <Link to='/register'>Sign Up</Link></span>
         </div>

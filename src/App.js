@@ -13,11 +13,13 @@ import StoryViewCoordinatorV2 from './components/StoryViewCoordinatorV2';
 import NewStory from './components/NewStory';
 import Profile from './components/Profile';
 
+import GlobalStyle from './design/GlobalStyle';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <GlobalStyle />
         <Route path='/' component={Header} />
         <Route exact path='/register' component={RegistrationPage}/>
         <Route exact path='/login' component={LoginModal} />

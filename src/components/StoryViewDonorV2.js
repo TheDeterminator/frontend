@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import {getStoryByID} from '../actions';
 import styled from 'styled-components';
 
+import theme from '../design/theme';
+import Button from '../design/Button';
+
 const StoryContainer = styled.div`
   max-width: 800px;
   widht: 100%;
@@ -17,16 +20,8 @@ const ImageBanner = styled.img`
 `
 const Background = styled.div`
   max-width: 1000px;
-  background-color: #D1DAE5;
+  background-color: ${theme.color.primaryBgShading};
   margin: 0 auto;
-`
-const Button = styled.button`
-  font-size: 24px;
-  border: 1px solid black;
-  border-radius: 25px;
-  margin-top: 25px;
-  background-color: #FF7F50;
-  width: 150px;
 `
 
 class StoryViewDonorV2 extends React.Component {
@@ -50,7 +45,7 @@ class StoryViewDonorV2 extends React.Component {
           <h1>{this.props.storyByID.title}</h1>
           <h2>{this.props.storyByID.country}</h2>
           <p>{this.props.storyByID.description}</p>
-          <Button>Donate</Button>
+          <Button alert>Donate</Button>
         </StoryContainer>
       </Background> : <div>Loading Data...</div>}
       </div>

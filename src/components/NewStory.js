@@ -3,6 +3,11 @@ import {connect} from 'react-redux';
 import {newStory} from '../actions';
 import styled from 'styled-components';
 
+import theme from '../design/theme';
+import LoginContainer from '../design/LoginContainer';
+import Form from '../design/Form';
+import Button from '../design/Button';
+
 const StoryContainer = styled.div`
   max-width: 800px;
   widht: 100%;
@@ -13,28 +18,25 @@ const StoryContainer = styled.div`
 `
 const Background = styled.div`
   max-width: 1000px;
-  background-color: #D1DAE5;
+  background-color: ${theme.color.primaryBgShading};
   margin: 0 auto;
 `
-const Button = styled.button`
-  font-size: 24px;
-  border: 1px solid black;
-  border-radius: 25px;
-  margin-top: 25px;
-  background-color: #FF7F50;
-  width: 150px;
-`
+
+// const Button = styled.button`
+//   font-size: 24px;
+//   border: 1px solid black;
+//   border-radius: 25px;
+//   margin-top: 25px;
+//   background-color: #FF7F50;
+//   width: 150px;
+// `
 const DescriptionEdit = styled.textarea`
-  width: 800px;
   height: 400px;
-  border: none;
-  border-radius: 5px;
 `
 const TitleEdit = styled.input`
-  width: 800px;
+  // width: 800px;
   border: none;
-  border-radius: 5px;
-  font-size: 18px;
+  font-size: ${theme.fontSizing.sm};
 `
 
 class NewStory extends React.Component {
@@ -67,18 +69,16 @@ class NewStory extends React.Component {
 
   render(){
     return (
-      <Background>
-        <StoryContainer>
-          <h1>New Story</h1>
-          <form onSubmit={this.saveStory}>
-            <div>Title</div>
-            <TitleEdit onChange={this.changeHandler} name='title' value={this.state.story.title} />
-            <div>Description</div>
-            <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
-            <Button type='submit'>Save</Button>
-          </form>
-        </StoryContainer>
-      </Background>
+      <LoginContainer>
+        <h1>New Story</h1>
+        <Form onSubmit={this.saveStory}>
+          <div>Title</div>
+          <TitleEdit onChange={this.changeHandler} name='title' value={this.state.story.title} />
+          <div>Description</div>
+          <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
+          <Button type='submit'>Save</Button>
+        </Form>
+      </LoginContainer>
     );
   }
 }

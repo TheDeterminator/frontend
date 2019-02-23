@@ -5,16 +5,17 @@ import {Link} from 'react-router-dom';
 import theme from '../design/theme';
 
 const ListviewComponentContainer = styled.div`
-  width: 175px;
-  height: 175px;
+  width: 300px;
+  padding: 10px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   margin: 25px 25px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 
+  0 7px 20px 0 rgba(0, 0, 0, 0.17);    
 `
 const ImageContainer = styled.div`
-  width: 175px;
-  height: 50px;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +24,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 125px;
+  height: 300px;
+  
   background-color: ${theme.color.primaryBgShading};
 `
 const Description = styled.p`
@@ -32,9 +34,8 @@ const Description = styled.p`
   overflow: hidden;
 `
 const Image = styled.img`
-  height: 100%;
   width: 100%;
-  object-fit: cover;
+  height: auto;
 `
 
 class GridviewComponent extends React.Component {
@@ -44,7 +45,7 @@ class GridviewComponent extends React.Component {
       <div>
         <Link to={`/home/donor/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
           <ListviewComponentContainer>
-            <ImageContainer><Image src={this.props.story.small_image}/></ImageContainer>
+            <ImageContainer><Image src={this.props.story.large_image}/></ImageContainer>
             <Content>
               <div>{this.props.story.title}</div>
               <Description>{this.props.story.description}</Description>

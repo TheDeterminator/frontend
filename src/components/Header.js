@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import {logout} from '../actions';
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -43,16 +45,37 @@ const Logo = styled.div`
   }
 `
 
-const Header = () => {
-  return (
-    <HeaderContainer>
-      <HeaderWrapper>
-        <Logo>
-          <div>Bountiful</div>
-        </Logo>
-      </HeaderWrapper>
-    </HeaderContainer>
-  );
+class Header extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  logoutUser = e => {
+    localStorage.clear();
+    this.props.logout();
+    this.props.history.push('/home');
+  }
+
+  render(){
+    return (
+      <HeaderContainer>
+        <HeaderWrapper>
+          <Logo>
+            <div>Bountiful</div>
+          </Logo>
+          <div>
+            {this.props.userLoggedIn ? <button onClick={this.logoutUser}>Sign Out</button> : null}
+          </div>
+        </HeaderWrapper>
+      </HeaderContainer>
+    );
+  };
 }
 
-export default Header;
+const mstp = state => {
+  return ({
+    userLoggedIn: state.userLoggedIn
+  });
+}
+
+export default connect(mstp, {logout: logout})(Header);

@@ -34,6 +34,7 @@ class App extends Component {
         <Route exact path='/home/coordinator/story/:id' component={StoryViewCoordinatorV2} />
         <Route exact path='/home/coordinator/new' component={NewStory} />
         <Route exact path='/user' component={Profile} />
+        <Route exact path='/home' component={() => { window.location = 'https://bountifulapp.netlify.com/'; return null;} }/>
       </div>
     );
   }

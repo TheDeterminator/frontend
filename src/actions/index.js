@@ -1,26 +1,3 @@
-// server.get('/coord/:id/home') //fetches that coordinator's array of their own stories
-// server.get('/coord/:id') //fetches that coordinator's profile info
-// server.put('/coord/:id') //updates that coordinator's profile info
-// server.delete('/coord/:id') //deletes that coordinator's profile
-// server.get('/story/:id') //fetches that story by its id
-// server.post('/coord/:id') //add a new story by the coordinator's id
-// server.put('/story/:id') //updates that story by its id
-// server.delete('/story/:id') //deletes that story by its id
-
-// export const name = () => dispatch => {
-//   axios
-//     .get('https://bountiful-backend.herokuapp.com/')
-//     .then(response => {
-//       dispatch({
-//         type: ,
-//         payload:
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// }
-
 import axios from 'axios';
 
 export const GET_GLOBAL_STORIES = 'GET_GLOBAL_STORIES';
@@ -38,9 +15,15 @@ export const GET_DONOR_USER = 'GET_DONOR_USER';
 export const DELETE_DONOR_USER = 'DELETE_DONOR_USER';
 export const UPDATE_DONOR_USER = 'UPDATE_DONOR_USER';
 export const LOADING = 'LOADING';
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => dispatch => {
+  dispatch({
+    type: LOGOUT
+  });
+}
 
 export const getGlobalStories = options => dispatch => {
-  dispatch({type:LOADING});
   axios
     .get('https://bountiful-backend.herokuapp.com/donor/home', options)
     .then(response => {

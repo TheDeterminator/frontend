@@ -11,6 +11,17 @@ const theme = {
     lightText: '#FFFFFF'
   },
 
+  colorScheme: {
+    logoColor: () => {return theme.color.lightText},
+    headerBgColor: () => {return theme.color.primaryColor},
+    headerFontColor: () => {return theme.color.lightText},
+    footerBgColor: () => {return theme.color.headerBgColor},
+    footerFontColor: () => {return theme.color.headerFontColor},
+    headingColor: () => {return theme.color.darkText},
+    defaultFontColor: () => {return theme.color.darkText},
+    defaultLinkColor: () => {return theme.color.secondaryColor}
+  },
+
   fontStyles: {
     logoFont: "'Dancing Script', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
     headingFont: "Roboto, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",

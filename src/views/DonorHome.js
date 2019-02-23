@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {getGlobalStories} from '../actions';
 import GridviewComponent from '../components/GridviewComponent';
+import { withRouter } from 'react-router-dom';
 
 const GridviewContainer = styled.div`
   display: flex;
@@ -14,9 +15,6 @@ const GridviewContainer = styled.div`
 `
 
 class DonorHome extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   componentDidMount(){
     const token = localStorage.getItem('jwt');
@@ -25,13 +23,14 @@ class DonorHome extends React.Component {
           Authorization: token,
       }
     }
+
     this.props.getGlobalStories(options);
   }
 
   render(){
     return (
       <div>
-        {this.props.globalStories ? <GridviewContainer>
+        {!this.props.loading ? <GridviewContainer>
           {this.props.globalStories.map(story => <GridviewComponent key={story.id} story={story}/>)}
         </GridviewContainer> : <div>Loading Data...</div>}
       </div>
@@ -41,8 +40,9 @@ class DonorHome extends React.Component {
 
 const mstp = (state) => {
   return {
-    globalStories: state.globalStories
+    globalStories: state.globalStories,
+    loading: state.loading
   };
 }
 
-export default connect(mstp, {getGlobalStories: getGlobalStories})(DonorHome);
+export default withRouter(connect(mstp, {getGlobalStories: getGlobalStories})(DonorHome));

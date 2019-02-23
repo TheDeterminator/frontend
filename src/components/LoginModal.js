@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { login, getCoordUser } from '../actions';
-import {Redirect} from 'react-router-dom';
+import { login } from '../actions';
+import {Link} from 'react-router-dom';
 
 const LoginContainer = styled.div`
   width: 300px;
@@ -52,21 +52,8 @@ class LoginModal extends React.Component {
   loginHandler = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
-    this.props.history.push('/home/coordinator');
+    this.props.history.push('/home/donor');
   }
-
-  componentDidMount(){
-    const token = localStorage.getItem('jwt');
-    const id = localStorage.getItem('user_id');
-    const options = {
-      headers: {
-          Authorization: token,
-      }
-    }
-    this.props.getCoordUser(id, options);
-  }
-
-
 
   render(){
     return (
@@ -78,17 +65,11 @@ class LoginModal extends React.Component {
           <LoginButton type='submit'>Login</LoginButton>
         </form>
         <div>
-          <span>Not registered? <a href='#'>Sign Up</a></span>
+          <span>Not registered? <Link to='/register'>Sign Up</Link></span>
         </div>
       </LoginContainer>
     );
   }
 }
 
-const mstp = state => {
-  return ({
-    user: state.user
-  });
-}
-
-export default connect(null, {login: login, getCoordUser: getCoordUser})(LoginModal);
+export default connect(null, {login: login})(LoginModal);

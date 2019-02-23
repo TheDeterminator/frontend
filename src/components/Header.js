@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import {logout} from '../actions';
+import {logout, switchToMyStories, switchToAllStories} from '../actions';
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -46,14 +46,21 @@ const Logo = styled.div`
 `
 
 class Header extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   logoutUser = e => {
     localStorage.clear();
     this.props.logout();
     this.props.history.push('/home');
+  }
+
+  myStories = e => {
+    this.props.switchToMyStories();
+    this.props.history.push('/home/coordinator');
+  }
+
+  allStories = e => {
+    this.props.switchToAllStories();
+    this.props.history.push('/home/donor');
   }
 
   render(){
@@ -64,6 +71,8 @@ class Header extends React.Component {
             <div>Bountiful</div>
           </Logo>
           <div>
+            {this.props.showMyStoriesButton ? <button onClick={this.myStories}>My Stories</button> : null}
+            {this.props.showAllStoriesButton ? <button onClick={this.allStories}>All Stories</button> : null}
             {this.props.userLoggedIn ? <button onClick={this.logoutUser}>Sign Out</button> : null}
           </div>
         </HeaderWrapper>
@@ -74,8 +83,10 @@ class Header extends React.Component {
 
 const mstp = state => {
   return ({
-    userLoggedIn: state.userLoggedIn
+    userLoggedIn: state.userLoggedIn,
+    showMyStoriesButton: state.showMyStoriesButton,
+    showAllStoriesButton: state.showAllStoriesButton
   });
 }
 
-export default connect(mstp, {logout: logout})(Header);
+export default connect(mstp, {logout: logout, switchToMyStories: switchToMyStories, switchToAllStories: switchToAllStories})(Header);

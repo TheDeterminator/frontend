@@ -30,9 +30,6 @@ const Button = styled.button`
 `
 
 class StoryViewDonorV2 extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   componentDidMount(){
     const token = localStorage.getItem('jwt');

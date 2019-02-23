@@ -40,9 +40,6 @@ const Image = styled.img`
 `
 
 class ListviewComponent extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   render(){
     return (

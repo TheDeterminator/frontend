@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {newStory} from '../actions';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StoryContainer = styled.div`
@@ -24,12 +23,6 @@ const Button = styled.button`
   margin-top: 25px;
   background-color: #FF7F50;
   width: 150px;
-`
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 325px;
-  justify-content: space-between;
 `
 const DescriptionEdit = styled.textarea`
   width: 800px;

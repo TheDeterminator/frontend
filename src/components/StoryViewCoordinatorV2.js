@@ -4,6 +4,10 @@ import {getStoryByID, updateStory, deleteStory} from '../actions';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 
+import theme from '../design/theme';
+import Form from '../design/Form';
+import Button from '../design/Button';
+
 const StoryContainer = styled.div`
   max-width: 800px;
   widht: 100%;
@@ -21,17 +25,10 @@ const ImageBanner = styled.img`
 `
 const Background = styled.div`
   max-width: 1000px;
-  background-color: #D1DAE5;
+  background-color: ${theme.color.primaryBgShading};
   margin: 0 auto;
 `
-const Button = styled.button`
-  font-size: 24px;
-  border: 1px solid black;
-  border-radius: 25px;
-  margin-top: 25px;
-  background-color: #FF7F50;
-  width: 150px;
-`
+
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -120,11 +117,11 @@ class StoryViewCoordinator extends React.Component {
           </ButtonContainer>
         </StoryContainer> :
         <StoryContainer>
-          <form>
+          <Form>
             <input onChange={this.changeHandler} name='title' value={this.state.story.title} />
             <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
             <Button onClick={this.saveStory}>Save</Button>
-          </form>
+          </Form>
         </StoryContainer>}</div> : <div>Loading Data...</div>}
       </Background>
     );

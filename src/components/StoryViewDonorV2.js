@@ -23,6 +23,10 @@ const Background = styled.div`
   background-color: ${theme.color.primaryBgShading};
   margin: 0 auto;
 `
+const BackButton = styled.div`
+  display: flex;
+  align-self: flex-start;
+`
 
 class StoryViewDonorV2 extends React.Component {
 
@@ -39,7 +43,9 @@ class StoryViewDonorV2 extends React.Component {
   render(){
     return (
       <div>
+      <BackButton>
       <Button onClick={()=>this.props.history.push('/home/donor')}>Back</Button>
+      </BackButton>
       {this.props.storyByID ? <Background>
         <ImageBanner src={this.props.storyByID.large_image}/>
         <StoryContainer>

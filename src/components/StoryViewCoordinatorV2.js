@@ -41,6 +41,10 @@ const DescriptionEdit = styled.textarea`
   border: none;
   border-radius: 5px;
 `
+const BackButton = styled.div`
+  display: flex;
+  align-self: flex-start;
+`
 
 class StoryViewCoordinator extends React.Component {
   constructor(props){
@@ -106,7 +110,9 @@ class StoryViewCoordinator extends React.Component {
   render(){
     return (
       <div>
+      <BackButton>
       <Button onClick={()=>this.props.history.push('/home/coordinator')}>Back</Button>
+      </BackButton>
       <Background>
         {this.props.storyByID ? <div><ImageBanner src={this.props.storyByID.large_image}/>
         {!this.state.edit ? <StoryContainer>

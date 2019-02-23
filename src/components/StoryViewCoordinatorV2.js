@@ -103,6 +103,7 @@ class StoryViewCoordinator extends React.Component {
       }
     }
     this.props.deleteStory(this.props.storyByID.id, options);
+    this.props.history.push(`/home/coordinator/`);
   }
 
   render(){

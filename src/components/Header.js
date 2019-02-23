@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Logo from '../design/Logo';
+import NavMenu from '../design/NavMenu';
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -31,17 +33,6 @@ const HeaderWrapper = styled.a`
     align-items: center;
   }
 `
-const Logo = styled.div`
-  width: 100%;
-  padding: 10px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  @media (max-width: 800px) and (min-width: 768px), (min-width: 801px){
-    width: auto;
-  }
-`
 
 const Header = () => {
   return (
@@ -50,6 +41,14 @@ const Header = () => {
         <Logo>
           <div>Bountiful</div>
         </Logo>
+        <NavMenu>
+          <a>
+            About
+          </a>
+          <a>
+            Logout
+          </a>
+        </NavMenu>
       </HeaderWrapper>
     </HeaderContainer>
   );

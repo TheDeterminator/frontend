@@ -92,6 +92,7 @@ class StoryViewCoordinator extends React.Component {
     this.setState({
       edit: false
     });
+    this.props.history.push(`/home/coordinator/story/${this.props.match.params.id}`);
   }
 
   deleteStory = e => {

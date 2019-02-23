@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
       case DELETE_STORY:
         return {...state, coordinatorStories: action.payload};
       case UPDATE_STORY:
-        return {...state, coordinatorStories: action.payload};
+        return {...state, storyByID: action.payload};
       case GET_COORD_USER:
         return {...state, user: action.payload}
       case LOGIN:

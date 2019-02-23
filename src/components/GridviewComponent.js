@@ -41,6 +41,10 @@ const Image = styled.img`
 class GridviewComponent extends React.Component {
 
   render(){
+    let storyContent = this.props.story.description;
+    if(this.props.story.description.length > 200){
+      storyContent = storyContent.substring(0,200) + '...'
+    }
     return (
       <div>
         <Link to={`/home/donor/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
@@ -48,7 +52,7 @@ class GridviewComponent extends React.Component {
             <ImageContainer><Image src={this.props.story.large_image}/></ImageContainer>
             <Content>
               <div>{this.props.story.title}</div>
-              <Description>{this.props.story.description}</Description>
+              <Description>{storyContent}</Description>
             </Content>
           </ListviewComponentContainer>
         </Link>

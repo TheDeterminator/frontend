@@ -4,7 +4,7 @@ import theme from '../design/theme';
 const LoginContainer = styled.div`
   width: 90%;
   max-width: 600px;
-  height: 400px;
+  height: 425px;
   display: flex;
   flex-direction: column;
   justify-content: center;

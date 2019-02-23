@@ -4,30 +4,21 @@ import { connect } from 'react-redux';
 import { login, getCoordUser } from '../actions';
 import {Redirect} from 'react-router-dom';
 
+import theme from '../design/theme';
+import Form from '../design/Form';
+import Button from '../design/Button';
+
 const LoginContainer = styled.div`
-  width: 300px;
-  height: 250px;
-  background-color: #D1DAE5;
-  border-radius: 3px;
+  width: 90%;
+  max-width: 600px;
+  height: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin: 50px auto;
-`
-const Input = styled.input`
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  width: 220px;
-  height: 30px;
-  margin-bottom: 15px;
-`
-const LoginButton = styled.button`
-  width: 220px;
-  height: 35px;
-  border-radius: 5px;
-  background-color: #FF7F50;
-  border: none;
+  background-color: ${theme.color.primaryBgShading};
+  border-radius: 3px;
+  margin: 0 auto;
 `
 
 class LoginModal extends React.Component {
@@ -72,11 +63,11 @@ class LoginModal extends React.Component {
     return (
       <LoginContainer>
         <h1>Login</h1>
-        <form onSubmit={this.loginHandler} method='POST'>
-          <Input onChange={this.changeHandler} placeholder='Username' name='username' value={this.state.credentials.username}/>
-          <Input onChange={this.changeHandler} placeholder='Password' type='password' name='password' value={this.state.credentials.password}/>
-          <LoginButton type='submit'>Login</LoginButton>
-        </form>
+        <Form onSubmit={this.loginHandler} method='POST'>
+          <input onChange={this.changeHandler} placeholder='Username' name='username' value={this.state.credentials.username}/>
+          <input onChange={this.changeHandler} placeholder='Password' type='password' name='password' value={this.state.credentials.password}/>
+          <Button type='submit'>Login</Button>
+        </Form>
         <div>
           <span>Not registered? <a href='#'>Sign Up</a></span>
         </div>

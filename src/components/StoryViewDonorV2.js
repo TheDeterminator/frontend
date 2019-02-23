@@ -45,7 +45,7 @@ class StoryViewDonorV2 extends React.Component {
           <h1>{this.props.storyByID.title}</h1>
           <h2>{this.props.storyByID.country}</h2>
           <p>{this.props.storyByID.description}</p>
-          <Button>Donate</Button>
+          <Button alert>Donate</Button>
         </StoryContainer>
       </Background> : <div>Loading Data...</div>}
       </div>

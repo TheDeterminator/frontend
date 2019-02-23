@@ -7,3 +7,9 @@ The Bountiful Children's Foundation needs a way to collect success stories from 
 - React.js - UI
 - React Router - Client Side Routing
 - React Redux - State Management
+- Styled Components - Styling
+
+# Landing Pages
+[Landing Pages Readme](https://github.com/coordinator-storytelling/landing-pages)
+# Backend
+[Backend Readme](https://github.com/coordinator-storytelling/backend)

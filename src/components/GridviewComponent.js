@@ -38,9 +38,6 @@ const Image = styled.img`
 `
 
 class GridviewComponent extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   render(){
     return (

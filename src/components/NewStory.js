@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {newStory} from '../actions';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import theme from '../design/theme';
@@ -23,11 +22,19 @@ const Background = styled.div`
   margin: 0 auto;
 `
 
+// const Button = styled.button`
+//   font-size: 24px;
+//   border: 1px solid black;
+//   border-radius: 25px;
+//   margin-top: 25px;
+//   background-color: #FF7F50;
+//   width: 150px;
+// `
 const DescriptionEdit = styled.textarea`
   height: 400px;
 `
 const TitleEdit = styled.input`
-  width: 800px;
+  // width: 800px;
   border: none;
   font-size: ${theme.fontSizing.sm};
 `

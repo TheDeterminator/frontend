@@ -16,6 +16,8 @@ export const DELETE_DONOR_USER = 'DELETE_DONOR_USER';
 export const UPDATE_DONOR_USER = 'UPDATE_DONOR_USER';
 export const LOADING = 'LOADING';
 export const LOGOUT = 'LOGOUT';
+export const MY_STORIES = 'LOGOUT';
+export const ALL_STORIES = 'LOGOUT';
 
 export const logout = () => dispatch => {
   dispatch({
@@ -23,7 +25,20 @@ export const logout = () => dispatch => {
   });
 }
 
+export const switchToMyStories = () => dispatch => {
+  dispatch({
+    type: MY_STORIES
+  });
+}
+
+export const switchToAllStories = () => dispatch => {
+  dispatch({
+    type: ALL_STORIES
+  });
+}
+
 export const getGlobalStories = options => dispatch => {
+  dispatch({type:LOADING});
   axios
     .get('https://bountiful-backend.herokuapp.com/donor/home', options)
     .then(response => {

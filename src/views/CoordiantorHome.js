@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {getCoordinatorStories, newStory} from '../actions';
+import {getCoordinatorStories} from '../actions';
 import { withRouter } from 'react-router-dom';
 
 import ListviewComponent from '../components/ListviewComponent';
@@ -20,9 +20,6 @@ const NewStoryButton = styled.button`
 `
 
 class CoordinatorHome extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   componentDidMount(){
     const token = localStorage.getItem('jwt');

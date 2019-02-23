@@ -9,9 +9,11 @@ const LoginContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.color.primaryBgShading};
-  border-radius: 3px;
   margin: 0 auto;
+  border-radius: 3px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 
+  0 7px 20px 0 rgba(0, 0, 0, 0.17);  
+  background-color: ${theme.color.primaryBgShading};
 `
 
 export default LoginContainer;

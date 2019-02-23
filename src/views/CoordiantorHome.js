@@ -14,6 +14,10 @@ const ListContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `
+const Div = styled.div`
+  margin-top: 25px;
+  margin-bottom: 10px;
+`
 
 class CoordinatorHome extends React.Component {
 
@@ -32,8 +36,8 @@ class CoordinatorHome extends React.Component {
     return (
       <div>
          <Link to='/home/coordinator/new'>
-          <Button story alert>Add Story <br />+</Button>
-        </Link>       
+          <Div><Button story alert>Add Story</Button></Div>
+        </Link>
         {!this.props.loading ? <ListContainer>
           {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}
         </ListContainer> : <div>Loading Data...</div>}

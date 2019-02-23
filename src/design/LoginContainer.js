@@ -10,9 +10,10 @@ const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-top: 25px;
   border-radius: 3px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 
-  0 7px 20px 0 rgba(0, 0, 0, 0.17);  
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+  0 7px 20px 0 rgba(0, 0, 0, 0.17);
   background-color: ${theme.color.primaryBgShading};
 `
 

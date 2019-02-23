@@ -11,8 +11,12 @@ const ListviewComponentContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 25px 25px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 
-  0 7px 20px 0 rgba(0, 0, 0, 0.17);    
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+  0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  &:hover {
+    box-shadow: 0 5px 8px 0 rgba(19, 99, 168, 0.2),
+    0 7px 20px 0 rgba(19, 99, 168, 0.17);
+  }
 `
 const ImageContainer = styled.div`
   height: 30%;
@@ -25,7 +29,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   height: 300px;
-  
+
   background-color: ${theme.color.primaryBgShading};
 `
 const Description = styled.p`
@@ -41,6 +45,10 @@ const Image = styled.img`
 class GridviewComponent extends React.Component {
 
   render(){
+    let storyContent = this.props.story.description;
+    if(this.props.story.description.length > 300){
+      storyContent = storyContent.substring(0,300) + '...'
+    }
     return (
       <div>
         <Link to={`/home/donor/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
@@ -48,7 +56,7 @@ class GridviewComponent extends React.Component {
             <ImageContainer><Image src={this.props.story.large_image}/></ImageContainer>
             <Content>
               <div>{this.props.story.title}</div>
-              <Description>{this.props.story.description}</Description>
+              <Description>{storyContent}</Description>
             </Content>
           </ListviewComponentContainer>
         </Link>

@@ -15,8 +15,12 @@ const ListviewComponentContainer = styled.div`
   background-color: ${theme.color.primaryBgShading};
   margin-top: 10px;
   margin-bottom: 10px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 
-  0 7px 20px 0 rgba(0, 0, 0, 0.17);    
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+  0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  &:hover {
+    box-shadow: 0 5px 8px 0 rgba(19, 99, 168, 0.2),
+    0 7px 20px 0 rgba(19, 99, 168, 0.17);
+  }
 `
 const ImageContainer = styled.div`
   width: 25%;
@@ -26,8 +30,6 @@ const ImageContainer = styled.div`
 `
 const Description = styled.p`
   width: 80%;
-  height: 75px;
-  text-overflow: ellipsis;
   overflow: hidden;
 `
 const ContentContainer = styled.div`
@@ -46,6 +48,10 @@ const Image = styled.img`
 class ListviewComponent extends React.Component {
 
   render(){
+    let storyContent = this.props.story.description;
+    if(this.props.story.description.length > 200){
+      storyContent = storyContent.substring(0,200) + '...'
+    }
     return (
       <div>
         <Link to={`/home/coordinator/story/${this.props.story.id}`} style={{ textDecoration: 'none', color: 'black' }}>
@@ -55,7 +61,7 @@ class ListviewComponent extends React.Component {
               <div>{this.props.story.title}</div>
               <div>{this.props.story.country}</div>
               <Description>
-                {this.props.story.description}
+                {storyContent}
               </Description>
             </ContentContainer>
           </ListviewComponentContainer>

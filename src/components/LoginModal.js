@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { login, getCoordUser } from '../actions'
+import { login, getCoordUser } from '../actions';
+import {Redirect} from 'react-router-dom';
 
 const LoginContainer = styled.div`
   width: 300px;
@@ -36,7 +37,8 @@ class LoginModal extends React.Component {
       credentials: {
         username: ``,
         password: ``
-      }
+      },
+      redirect: false
     }
   }
 
@@ -53,21 +55,15 @@ class LoginModal extends React.Component {
     this.props.login(this.state.credentials);
     const token = localStorage.getItem('jwt');
     const userID = localStorage.getItem('user_id');
+    console.log(userID);
     const options = {
       headers: {
           Authorization: token,
       }
     };
-    console.log('before get coord user', userID);
-    setTimeout(this.props.getCoordUser(userID, options), 2500);
-    setTimeout(() => {
-      if(this.props.user.role === 'Coordinator'){
-        this.props.history.push('/home/coordinator');
-      }else {
-        this.props.historyl.push('/home/donor');
-      }
-    },2500)
   }
+
+
 
   render(){
     return (

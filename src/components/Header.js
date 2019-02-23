@@ -19,7 +19,7 @@ const HeaderContainer = styled.header`
     max-width: 1430px;
   }
 `
-const HeaderWrapper = styled.a`
+const HeaderWrapper = styled.div`
   width: 90%;
   max-width: 1000px;
   display: flex;
@@ -43,7 +43,7 @@ const Header = () => {
         </Logo>
         <NavMenu>
           <a>
-            About
+            Home
           </a>
           <a>
             Logout

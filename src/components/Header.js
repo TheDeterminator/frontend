@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import {logout} from '../actions';
 
+import theme from '../design/theme';
 import Logo from '../design/Logo';
 import NavMenu from '../design/NavMenu';
 
@@ -13,8 +14,8 @@ const HeaderContainer = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #FFFFFF;
-  background: #1363A8;
+  color: ${theme.colorScheme.headerFontColor};
+  background: ${theme.colorScheme.headerBgColor};
   top: 0;
   position: sticky;
   z-index: 10;
@@ -28,7 +29,6 @@ const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: normal;
   @media (min-width: 801px){
     display: flex;
     flex-direction: row;

@@ -13,6 +13,10 @@ const ListviewComponentContainer = styled.div`
   margin: 25px 25px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
   0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  &:hover {
+    box-shadow: 0 5px 8px 0 rgba(19, 99, 168, 0.2),
+    0 7px 20px 0 rgba(19, 99, 168, 0.17);
+  }
 `
 const ImageContainer = styled.div`
   height: 30%;

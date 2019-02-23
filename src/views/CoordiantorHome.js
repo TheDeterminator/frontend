@@ -7,16 +7,12 @@ import { withRouter } from 'react-router-dom';
 
 import ListviewComponent from '../components/ListviewComponent';
 
+import Button from '../design/Button';
+
 const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-const NewStoryButton = styled.button`
-  font-size: 24px;
-  border: 1px solid black;
-  border-radius: 25px;
-  margin-top: 25px;
 `
 
 class CoordinatorHome extends React.Component {
@@ -35,12 +31,12 @@ class CoordinatorHome extends React.Component {
   render(){
     return (
       <div>
+         <Link to='/home/coordinator/new'>
+          <Button story alert>Add Story <br />+</Button>
+        </Link>       
         {!this.props.loading ? <ListContainer>
           {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}
         </ListContainer> : <div>Loading Data...</div>}
-        <Link to='/home/coordinator/new'>
-          <NewStoryButton>+ New Story</NewStoryButton>
-        </Link>
       </div>
     );
   }

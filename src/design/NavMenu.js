@@ -6,7 +6,8 @@ const NavMenu = styled.nav`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  color: ${theme.colorScheme.headerFontColor};
+  
   @media ${theme.breakpoints[1]} {
     display: flex;
     flex-direction: row;
@@ -48,6 +49,8 @@ const NavMenu = styled.nav`
       }
     }  
   }
+
+  
 `
 
 export default NavMenu;

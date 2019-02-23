@@ -40,7 +40,7 @@ export const switchToAllStories = () => dispatch => {
 export const getGlobalStories = options => dispatch => {
   dispatch({type:LOADING});
   axios
-    .get('https://bountiful-backend.herokuapp.com/donor/home', options)
+    .get('https://test-bountiful.herokuapp.com/donor/home', options)
     .then(response => {
       dispatch({
         type: GET_GLOBAL_STORIES,
@@ -55,7 +55,7 @@ export const getGlobalStories = options => dispatch => {
 export const getCoordinatorStories = (id, options) => dispatch => {
   dispatch({type:LOADING});
   axios
-    .get(`https://bountiful-backend.herokuapp.com/coord/${id}/home`, options)
+    .get(`https://test-bountiful.herokuapp.com/coord/${id}/home`, options)
     .then(response => {
       dispatch({
         type: GET_COORDINATOR_STORIES,
@@ -69,7 +69,7 @@ export const getCoordinatorStories = (id, options) => dispatch => {
 
 export const getStoryByID = (id, options) => dispatch => {
   axios
-    .get(`https://bountiful-backend.herokuapp.com/story/${id}`, options)
+    .get(`https://test-bountiful.herokuapp.com/story/${id}`, options)
     .then(response => {
       dispatch({
         type: GET_STORY_BY_ID,
@@ -83,7 +83,7 @@ export const getStoryByID = (id, options) => dispatch => {
 
 export const newStory = (id, story, options) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/coord/${id}`, story, options)
+    .post(`https://test-bountiful.herokuapp.com/coord/${id}`, story, options)
     .then(response => {
       dispatch({
         type: NEW_STORY,
@@ -97,7 +97,7 @@ export const newStory = (id, story, options) => dispatch => {
 
 export const login = (user) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/login`, user)
+    .post(`https://test-bountiful.herokuapp.com/login`, user)
     .then(response => {
       localStorage.setItem('jwt', response.data.token);
       localStorage.setItem('user_id', response.data.user_id);
@@ -113,7 +113,7 @@ export const login = (user) => dispatch => {
 
 export const register = (newUser) => dispatch => {
   axios
-    .post(`https://bountiful-backend.herokuapp.com/register`, newUser)
+    .post(`https://test-bountiful.herokuapp.com/register`, newUser)
     .then(response => {
       dispatch({
         type: REGISTER
@@ -126,7 +126,7 @@ export const register = (newUser) => dispatch => {
 
 export const deleteStory = (storyID, options) => dispatch => {
   axios
-  .delete(`https://bountiful-backend.herokuapp.com/story/${storyID}`, options)
+  .delete(`https://test-bountiful.herokuapp.com/story/${storyID}`, options)
   .then(response => {
     dispatch({
       type: DELETE_STORY,
@@ -140,7 +140,7 @@ export const deleteStory = (storyID, options) => dispatch => {
 
 export const updateStory = (storyID, story, options) => dispatch => {
   axios
-    .put(`https://bountiful-backend.herokuapp.com/story/${storyID}`, story, options)
+    .put(`https://test-bountiful.herokuapp.com/story/${storyID}`, story, options)
     .then(response => {
       dispatch({
         type: UPDATE_STORY,
@@ -156,7 +156,7 @@ export const updateStory = (storyID, story, options) => dispatch => {
 
 export const getCoordUser = (id, options) => dispatch => {
   axios
-    .get(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
+    .get(`https://test-bountiful.herokuapp.com/coord/${id}`, options)
     .then(response => {
       console.log(response);
       dispatch({
@@ -170,7 +170,7 @@ export const getCoordUser = (id, options) => dispatch => {
 }
 export const updateCoordUser = (id, options) => dispatch => {
   axios
-    .put(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
+    .put(`https://test-bountiful.herokuapp.com/coord/${id}`, options)
     .then(response => {
       dispatch({
         type: UPDATE_COORD_USER,
@@ -183,7 +183,7 @@ export const updateCoordUser = (id, options) => dispatch => {
 }
 export const deleteCoordUser = (id, options) => dispatch => {
   axios
-    .delete(`https://bountiful-backend.herokuapp.com/coord/${id}`, options)
+    .delete(`https://test-bountiful.herokuapp.com/coord/${id}`, options)
     .then(response => {
       dispatch({
         type: DELETE_COORD_USER,
@@ -197,7 +197,7 @@ export const deleteCoordUser = (id, options) => dispatch => {
 
 export const getDonorUser = (id, options) => dispatch => {
   axios
-    .get(`https://bountiful-backend.herokuapp.com/donor/${id}`, options)
+    .get(`https://test-bountiful.herokuapp.com/donor/${id}`, options)
     .then(response => {
       dispatch({
         type: GET_DONOR_USER,
@@ -210,7 +210,7 @@ export const getDonorUser = (id, options) => dispatch => {
 }
 export const updateDonorUser = (id, options) => dispatch => {
   axios
-    .put(`https://bountiful-backend.herokuapp.com/donor/${id}`, options)
+    .put(`https://test-bountiful.herokuapp.com/donor/${id}`, options)
     .then(response => {
       dispatch({
         type: UPDATE_DONOR_USER,
@@ -223,7 +223,7 @@ export const updateDonorUser = (id, options) => dispatch => {
 }
 export const deleteDonorUser = (id, options) => dispatch => {
   axios
-    .delete(`https://bountiful-backend.herokuapp.com/donor/${id}`, options)
+    .delete(`https://test-bountiful.herokuapp.com/donor/${id}`, options)
     .then(response => {
       dispatch({
         type: DELETE_DONOR_USER,

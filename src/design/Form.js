@@ -16,8 +16,9 @@ const Form = styled.form`
       margin: 5px 0;
       padding: 5px;
       font-size: ${theme.fontSizing.s};
-      border: 1px solid ${theme.color.primaryBgShading};
+      border: 1px solid ${theme.color.secondaryBgShading};
       border-radius: 5px;
+      //background-color: ${theme.color.primaryBgShading}; 
     }
 
     button {

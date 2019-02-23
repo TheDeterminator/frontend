@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { login } from '../actions';
+import { login, getGlobalStories } from '../actions';
 import {Link} from 'react-router-dom';
 
 import LoginContainer from '../design/LoginContainer';
@@ -30,7 +30,15 @@ class LoginModal extends React.Component {
   loginHandler = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
-    this.props.history.push('/home/donor');
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+
+    this.props.getGlobalStories(options);
+    setTimeout(()=>this.props.history.push('/home/donor'), 1000);
   }
 
   render(){
@@ -50,4 +58,4 @@ class LoginModal extends React.Component {
   }
 }
 
-export default connect(null, {login: login})(LoginModal);
+export default connect(null, {login: login, getGlobalStories: getGlobalStories})(LoginModal);

@@ -39,6 +39,7 @@ class StoryViewDonorV2 extends React.Component {
   render(){
     return (
       <div>
+      <Button onClick={()=>this.props.history.push('/home/donor')}>Back</Button>
       {this.props.storyByID ? <Background>
         <ImageBanner src={this.props.storyByID.large_image}/>
         <StoryContainer>

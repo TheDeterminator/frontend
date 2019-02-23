@@ -12,14 +12,14 @@ const theme = {
   },
 
   colorScheme: {
-    logoColor: () => {return theme.color.lightText},
-    headerBgColor: () => {return theme.color.primaryColor},
-    headerFontColor: () => {return theme.color.lightText},
-    footerBgColor: () => {return theme.color.headerBgColor},
-    footerFontColor: () => {return theme.color.headerFontColor},
-    headingColor: () => {return theme.color.darkText},
-    defaultFontColor: () => {return theme.color.darkText},
-    defaultLinkColor: () => {return theme.color.secondaryColor}
+    logoColor: () => { return theme.color.lightText },
+    headerBgColor: () => { return theme.color.primaryColor },
+    headerFontColor: () => { return theme.color.lightText },
+    footerBgColor: () => { return theme.color.headerBgColor },
+    footerFontColor: () => { return theme.color.headerFontColor },
+    headingColor: () => { return theme.color.darkText },
+    defaultFontColor: () => { return theme.color.darkText },
+    defaultLinkColor: () => { return theme.color.secondaryColor }
   },
 
   fontStyles: {
@@ -41,8 +41,8 @@ const theme = {
 
   breakpoints: [
     '(max-width: 500px)',
-    '(max-width: 800px)',
-    '(max-width: 1430px)'
+    '(min-width: 768px)',
+    '(min-width: 801px)'
   ],
   // for media queries -- express them as @media ${system.breakpoints[0]} {styles here}
   // in the arr, the first is for mobile, second is for portrait tablet, third is for desktop

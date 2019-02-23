@@ -36,7 +36,7 @@ class CoordinatorHome extends React.Component {
     return (
       <div>
          <Link to='/home/coordinator/new'>
-          <Div><Button story alert>Add Story <br />+</Button></Div>
+          <Div><Button story alert>Add Story</Button></Div>
         </Link>
         {!this.props.loading ? <ListContainer>
           {this.props.coordinatorStories.map(story => <ListviewComponent key={story.id} story={story}/>)}

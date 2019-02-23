@@ -56,9 +56,7 @@ class Header extends React.Component {
             <div>Bountiful</div>
           </Logo>
           <NavMenu>
-            <div>
-              {this.props.userLoggedIn ? <button onClick={this.logoutUser}>Sign Out</button> : null}
-            </div>
+            {this.props.userLoggedIn ? <a onClick={this.logoutUser}>Sign Out</a> : null}
           </NavMenu>
         </HeaderWrapper>
       </HeaderContainer>

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { login } from '../actions'
+import { login, getCoordUser } from '../actions';
+import {Redirect} from 'react-router-dom';
 
 const LoginContainer = styled.div`
   width: 300px;
@@ -36,7 +37,8 @@ class LoginModal extends React.Component {
       credentials: {
         username: ``,
         password: ``
-      }
+      },
+      redirect: false
     }
   }
 
@@ -51,7 +53,17 @@ class LoginModal extends React.Component {
   loginHandler = e => {
     e.preventDefault();
     this.props.login(this.state.credentials);
+    const token = localStorage.getItem('jwt');
+    const userID = localStorage.getItem('user_id');
+    console.log(userID);
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    };
   }
+
+
 
   render(){
     return (
@@ -70,4 +82,10 @@ class LoginModal extends React.Component {
   }
 }
 
-export default connect(null, {login: login})(LoginModal);
+const mstp = state => {
+  return ({
+    user: state.user
+  });
+}
+
+export default connect(mstp, {login: login, getCoordUser: getCoordUser})(LoginModal);

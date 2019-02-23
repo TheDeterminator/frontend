@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getStoryByID, updateStory} from '../actions';
+import {getStoryByID, updateStory, deleteStory} from '../actions';
 import styled from 'styled-components';
 
 const StoryContainer = styled.div`
@@ -52,7 +52,7 @@ class StoryViewCoordinator extends React.Component {
         title: ``,
         description: ``
       },
-      edit: false
+      edit: false,
     }
   }
 
@@ -61,20 +61,46 @@ class StoryViewCoordinator extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getStoryByID(this.props.match.params.id);
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.getStoryByID(this.props.match.params.id, options);
   }
 
   editStory = e => {
     this.setState({
-      edit: true
+      edit: true,
+      story: {
+        title: this.props.storyByID.title,
+        description: this.props.storyByID.description
+      }
     });
   }
 
   saveStory = e => {
-    this.props.updateStory(this.props.storyByID.id, this.state.story);
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.updateStory(this.props.storyByID.id, this.state.story, options);
     this.setState({
       edit: false
     });
+  }
+
+  deleteStory = e => {
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.deleteStory(this.props.storyByID.id, options);
   }
 
   render(){
@@ -87,13 +113,13 @@ class StoryViewCoordinator extends React.Component {
           <p>{this.props.storyByID.description}</p>
           <ButtonContainer>
             <Button onClick={this.editStory}>Edit</Button>
-            <Button>Delete</Button>
+            <Button onClick={this.deleteStory}>Delete</Button>
           </ButtonContainer>
         </StoryContainer> :
         <StoryContainer>
           <form>
-            <input onChange={this.changeHandler} name='title' value={this.props.storyByID.title} />
-            <DescriptionEdit onChange={this.changeHandler} name='description' value={this.props.storyByID.description}></DescriptionEdit>
+            <input onChange={this.changeHandler} name='title' value={this.state.story.title} />
+            <DescriptionEdit onChange={this.changeHandler} name='description' value={this.state.story.description}></DescriptionEdit>
             <Button onClick={this.saveStory}>Save</Button>
           </form>
         </StoryContainer>}</div> : <div>Loading Data...</div>}
@@ -107,4 +133,4 @@ const mstp = (state) => {
     storyByID: state.storyByID
   };
 }
-export default connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory})(StoryViewCoordinator);
+export default connect(mstp, {getStoryByID: getStoryByID, updateStory: updateStory, deleteStory: deleteStory})(StoryViewCoordinator);

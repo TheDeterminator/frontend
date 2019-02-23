@@ -19,7 +19,13 @@ class DonorHome extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getGlobalStories();
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.getGlobalStories(options);
   }
 
   render(){

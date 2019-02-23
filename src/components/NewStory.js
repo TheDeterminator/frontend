@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {newStory} from '../actions';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StoryContainer = styled.div`
@@ -60,7 +61,15 @@ class NewStory extends React.Component {
 
   saveStory = e => {
     e.preventDefault();
-    this.props.newStory('1', this.state.story);
+    const token = localStorage.getItem('jwt');
+    const userID = localStorage.getItem('user_id');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.newStory(userID, this.state.story, options);
+    this.props.history.push('/home/coordinator');
   }
 
   render(){

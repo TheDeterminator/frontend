@@ -35,7 +35,13 @@ class StoryViewDonorV2 extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getStoryByID(this.props.match.params.id);
+    const token = localStorage.getItem('jwt');
+    const options = {
+      headers: {
+          Authorization: token,
+      }
+    }
+    this.props.getStoryByID(this.props.match.params.id, options);
   }
 
   render(){

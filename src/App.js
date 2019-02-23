@@ -28,7 +28,7 @@ class App extends Component {
         <Route path='/' component={Header} />
         <Route exact path='/register' component={RegistrationPage}/>
         <Route exact path='/login' component={LoginModal} />
-        <Route exact path='/home/coordinator' component={CoordinatorHome} />
+        <Route exact path='/home/coordinator' component={CoordinatorHome}/>
         <Route exact path='/home/donor' component={DonorHome} />
         <Route exact path='/home/donor/story/:id' component={StoryViewDonorV2} />
         <Route exact path='/home/coordinator/story/:id' component={StoryViewCoordinatorV2} />

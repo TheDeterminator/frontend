@@ -10,7 +10,7 @@ class RegistrationPage extends React.Component {
       userType: '',
       selectionViewToggle: true,
       coordinatorSelected: false,
-      countries: ['Bolivia', 'Brazil', 'Cambodia', 'Colombia', 'Ecuador', 'El Salvador', 'Ghana', 'Guatemala', 'Haiti', 'Honduras', 'Kiribati', 'Madagascar', 'Mongolia', 'Nicaragua', 'Paraguay', 'Peru', 'Philippines', 'Sierra Leone', 'Zimbabwe']
+      countries: ['Bolivia', 'Brazil', 'Cambodia', 'Colombia', 'Ecuador', 'El_Salvador', 'Ghana', 'Guatemala', 'Haiti', 'Honduras', 'Kiribati', 'Madagascar', 'Mongolia', 'Nicaragua', 'Paraguay', 'Peru', 'Philippines', 'Sierra_Leone', 'Zimbabwe']
 
     }
   }
@@ -51,7 +51,8 @@ class RegistrationPage extends React.Component {
           userType={this.state.userType}
           coordinatorSelected={this.state.coordinatorSelected}
           continueButton={this.continueButton}
-          backButton={this.backButton}/> : null}
+          backButton={this.backButton}
+          history={this.props.history}/> : null}
       </div>
     );
   }

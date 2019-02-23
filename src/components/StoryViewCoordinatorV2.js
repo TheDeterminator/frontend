@@ -113,7 +113,7 @@ class StoryViewCoordinator extends React.Component {
           <p>{this.props.storyByID.description}</p>
           <ButtonContainer>
             <Button onClick={this.editStory}>Edit</Button>
-            <Button onClick={this.deleteStory}>Delete</Button>
+            <Button alert onClick={this.deleteStory}>Delete</Button>
           </ButtonContainer>
         </StoryContainer> :
         <StoryContainer>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from '../design/theme';
 
 const Button = styled.button`
-  width: 100px;
+  width: ${props => props.story ? '150px': '100px'};
   padding: 5px;
   border-radius: 15px;
   text-align: center;
